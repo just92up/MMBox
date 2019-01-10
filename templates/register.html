@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>免费注册 - 美美箱Memebox</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/regalog.css' %}"/>
+		<script src="{% static 'js/jquery-1.12.0.js' %}"></script>
+		<script src="{% static 'js/common.js' %}"></script>
+		<script src="{% static 'js/regalog.js' %}"></script>
+		
+		<script src="{% static 'js/jquery.cookie.js' %}"></script>
+{#		<script src="{% static 'js/myhome.js' %}"></script>#}
+	</head>
+	<body>
+
+
+		<div id="common">
+			<!--顶部-->
+			<div id="topper">
+				<div id="top_box">
+					<div id="box_inner">
+						<a href="{% url 'mmbox:index' %}"><img src="{% static 'img/new-logo_memebox-china.png' %}"></a>
+					</div>
+				</div>
+			</div>
+
+
+			<!--container-->
+			<div id="main_container">
+				<div id="content">
+					<!--注册框-->
+					<div id="register_box">
+						<div id="register_content">
+							<h3>注册 <strong>MEMEBOX</strong></h3>
+							<div class="input_box">
+								<input type="text" name="" id="phone" placeholder="手机号码" value="13111121111">
+								<div class="msg">
+									请填写有效的手机号码
+								</div>
+								<div class="warm">
+									必填字段
+								</div>
+							</div>
+							<div class="input_box">
+								<input type="password" name="" id="pwd" placeholder="密码" maxlength="20" value="111111">
+								<div class="msg">
+									6~16位字符，建议字母加数字组合
+								</div>
+								<div class="warm">
+									必填字段
+								</div>
+								<div class="min_length">
+									最少6位字符
+								</div>
+								<div class="max_length">
+									长度超出限制范围。
+								</div>
+							</div>
+							<div class="input_box">
+								<div id="short_mes">
+									<input type="text" name="" id="sms" placeholder="短信验证码" maxlength="5">
+									<div id="send_btn"><a href="#">获取短信验证码</a></div>
+								</div>
+								<div class="msg msg_length">
+									短信验证码必须5位字符
+								</div>
+								<div id="site">
+									<div class="warm">
+									必填字段
+								</div>
+								</div>
+								<div class="warm wrong_code">
+									请填写正确的短信校验码
+								</div>
+							</div>
+
+							<div class="input_box">
+								<input type="submit" name="" id="reg" value="注册">
+								<p>注册即表示您已同意<span id="">美美箱用户协议</span></p>
+							</div>
+						</div>
+
+					</div>
+					<!--右侧-->
+					<div id="welfare">
+						<div id="login_acount">
+							<span id="have_account">已有账号？</span>
+							{% comment %}<button id="login_btn">{% endcomment %}<a href="{% url 'mmbox:login' %}">登录</a>{% comment %}</button>{% endcomment %}
+						</div>
+						<img src="{% static 'img/welfare.png' %}">
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<!--页脚-->
+			<div id="footer">
+
+				<div id="footer_intro">
+					<div class="intro">
+						<img src="{% static 'img/genuine.png' %}">
+						<p>100%正品</p>
+					</div>
+					<div class="intro">
+						<img src="{% static 'img/low.png' %}">
+						<p>优质低价</p>
+					</div>
+					<div class="intro">
+						<img src="{% static 'img/deliver.png' %}">
+						<p>极速发货</p>
+					</div>
+					<div class="intro">
+						<img src="{% static 'img/refund.png' %}">
+						<p>退换无忧</p>
+					</div>
+				</div>
+
+				<div id="footer_about">
+					<div id="footer_about_contact">
+						<div id="chat">
+							<img src="{% static 'img/szj.jpg' %}">
+							<p>关于我们</p>
+							<div id="chat_tool">
+								<div id="code">
+									<img src="{% static 'img/download.png' %}" class="download">
+									<img src="{% static 'img/wechatdownload.png' %}" class="wechatdownload">
+									<img src="{% static 'img/sinadownload.png' %}" class="sinadownload">
+								</div>
+								<img src="{% static 'img/meme.png' %}" class="meme">
+								<img src="{% static 'img/wechat.png' %}" class="">
+								<img src="{% static 'img/sina.png' %}" class="">
+							</div>
+						</div>
+
+						<div id="list">
+							<ul class="list">
+								<li class="list_title">关于美美箱</li>
+								<li><a href="#">美美全球</a></li>
+								<li><a href="#">品牌优势</a></li>
+								<li><a href="#">消费保障</a></li>
+							</ul>
+							<ul class="list">
+								<li class="list_title">帮助中心</li>
+								<li><a href="#">常见问题</a></li>
+								<li><a href="#">账户相关</a></li>
+								<li><a href="#">包邮政策</a></li>
+								<li><a href="#">支付相关</a></li>
+								<li><a href="#">物流相关</a></li>
+								<li><a href="#">退换政策</a></li>
+							</ul>
+							<ul class="list">
+								<li class="list_title">服务协议</li>
+								<li><a href="#">服务协议</a></li>
+								<li><a href="#">个人网申协议</a></li>
+							</ul>
+							<ul class="list">
+								<li class="list_title">联系我们</li>
+								<li><a href="#">商务合作</a></li>
+								<li><a href="#">分销合作</a></li>
+								<li><a href="#">加入我们</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div id="footer_contact">
+					<div class="service">
+						联系我们
+					</div>
+					<div class="way">
+						<span>客服时间:周一~周日(9:00 - 21:00)</span>
+						<span>客服热线:400-720-9967</span>
+						<span>客服邮箱:kf@memeboxglobal.com</span>
+					</div>
+				</div>
+
+				<div id="footer_legal">
+					<div class="corporation">
+						© 2015 Memebox Corporation.All Rights Reserved.
+					</div>
+					<div class="address">
+						<span><img src="{% static 'img/icon.gif' %}">&nbsp;蜜米柏克思（上海）商贸有限公司 上海市杨浦区政立路415号中航天盛广场A座6楼 沪ICP备14043341号</span>
+					</div>
+			</div>
+		</div>
+
+
+</div>
+
+    </body>
+</html>

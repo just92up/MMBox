@@ -1,0 +1,472 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>购物车</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/shop_car.css' %}"/>
+		<script src="{% static 'js/jquery-1.12.0.js' %}"></script>
+		<script src="{% static 'js/common.js' %}"></script>
+		<script src="{% static 'js/shop_car.js' %}"></script>
+		<script src="{% static 'js/myhome.js' %}"></script>
+
+		
+		
+		<!--json-->
+		
+	</head>
+	<body>
+		<div id="common">
+			<!--侧边栏-->
+			<div id="sideBar">
+				
+				<ul id="sideBar_top">
+					<li class="car"><a><img src="img/scar.png"/><img src="img/cscar.png" class="hidden_pic"/></a></li>
+					<li><a><img src="img/pesron.png"/><img src="img/1.png" class="hidden_pic"/>
+					</a></li>
+					<li><a><img src="img/heart.png"/><img src="img/2.png" class="hidden_pic"/></a></li>
+					<li><a><img src="img/dingdan.png"/><img src="img/3.png" class="hidden_pic"/></a></li>
+				</ul>
+				<ul id="sideBar_bottom">
+					<li><a><img src="img/support.png" class="side_service"/><img src="img/ssupport.png" class="hidden_pic"/></a></li>
+					<li><a><img src="img/top.png" class="top"/><img src="img/stop.png" class="hidden_pic"/></a></li>
+				</ul>	
+			</div>
+			
+			<div id="side_slider">
+				<div id="slider_top">
+					<div class="slider1">
+						个人中心
+					</div>
+					<div class="slider2">
+						我的收藏
+					</div>
+					<div class="slider3">
+						我的订单
+					</div>
+				</div>
+				<div id="slider_bottom">
+					<div class="slider4">
+						在线客服
+					</div>
+					<div class="slider5">
+						返回顶部
+					</div>
+				</div>
+			</div>
+			
+			
+
+			
+			
+			<!--顶部-->
+			<div id="top">
+				<div id="box">
+					<p class="p1">
+						<img src="img/hearts.png" class="pic1"/>
+						<span>100%韩国正品美美箱</span>
+						<img src="img/candler.png"/>
+						<span class="regs">[每日签到]</span>
+						<span>每月累计签到满10次，即可获得5蜜豆</span>
+					</p>
+					<p class="p2">
+						<span>登录</span>
+						<span>注册</span>
+						<span>|</span>
+						<img src="img/phone.png"/>
+						<span>手机APP</span>
+						<img src="img/supports.png"/>
+						<span>在线客服</span>
+					</p>
+				</div>
+			</div>
+			
+				
+				
+			<!--头部-->
+			<div id="title">
+				<div id="car_head">
+					<div id="logo">
+						<img src="img/new-logo_memebox-china.png"/>
+					</div>
+					<div id="progress">
+						
+					</div>
+				</div>
+			</div>
+			
+			
+			<!--购物车-->
+			<div id="car_container">
+				<div id="car_table">
+					<div id="car_box">
+						<table border="0" cellspacing="0" cellpadding="">
+							<thead>
+								<tr>
+									<th class="loacl"><span><img src="img/soon.png"/></span><span class="zone">中国仓</span><span class="fee_mail">满99元包邮</span></th>
+									<th class="format">规格</th>
+									<th class="o_price">单价（元）</th>
+									<th class="goods_amounts">数量</th>
+									<th class="price">金额（元）</th>
+									<th class="action">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="goods_img">
+											<img src="img/g2.jpg"/>
+										</div>
+										<div class="goods_title">
+											<a href="">INNISFREE 悦诗风吟真液胶囊面膜10个 海草</a>
+										</div>
+									</td>
+									<td>
+										<div class="norms">
+											<span class="norms_num">10 x 真液胶囊面膜1个 #01. 海草 
+												<span class="norms_price">
+													¥0.00
+												</span>
+											</span>
+											
+										</div>
+									</td>
+									<td>
+										<div id="unit_price">
+											<span class="unit_price">
+												¥126.00
+											</span>
+										</div>
+									</td>
+									<td>
+										<div class="amount_box">
+											<button type="submit" class="substract">-</button>
+											<input type="text" name="" id="goods_amount" value="1" disabled="disabled"/>
+											<button type="submit" class="add">+</button>
+										</div>
+									</td>
+									<td><span class="total_price">¥252.00</span></td>
+									<td>
+										<div class="user_action">
+											<a href="" class="my_store">移入我的收藏</a>
+											<br />
+											<a href="" class="my_store">删除</a>
+										</div>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<div class="goods_img">
+											<img src="img/g1.jpg"/>
+										</div>
+										<div class="goods_title">
+											<a href="">INNISFREE 悦诗风吟真液胶囊面膜10个 海草</a>
+										</div>
+									</td>
+									<td>
+										<div class="norms">
+											<span class="norms_num">--
+												<!--<span class="norms_price">
+													¥0.00
+												</span>-->
+											</span>
+											
+										</div>
+									</td>
+									<td>
+										<div id="unit_price">
+											<span class="unit_price">
+												¥126.00
+											</span>
+										</div>
+									</td>
+									<td>
+										<div class="amount_box">
+											<button type="submit" class="substract">-</button>
+											<input type="text" name="" id="goods_amount" value="1" disabled="disabled"/>
+											<button type="submit" class="add">+</button>
+										</div>
+									</td>
+									<td><span class="total_price">¥252.00</span></td>
+									<td>
+										<div class="user_action">
+											<a href="" class="my_store">移入我的收藏</a>
+											<br />
+											<a href="" class="my_store">删除</a>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							
+							<tfoot>
+								<tr>
+									<td colspan="6">
+										<div id="car_price">
+											<span class="total_text">
+												本仓总计：
+											</span>
+											<span class="car_price">
+												¥1,139.00
+											</span>
+										</div>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+						
+						<table border="0" cellspacing="0" cellpadding="">
+							<thead>
+								<tr>
+									<th class="loacl"><span><img src="img/soon.png"/></span><span class="zone">中国仓</span><span class="fee_mail">满99元包邮</span></th>
+									<th class="format">规格</th>
+									<th class="o_price">单价（元）</th>
+									<th class="goods_amounts">数量</th>
+									<th class="price">金额（元）</th>
+									<th class="action">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="goods_img">
+											<img src="img/g2.jpg"/>
+										</div>
+										<div class="goods_title">
+											<a href="">INNISFREE 悦诗风吟真液胶囊面膜10个 海草</a>
+										</div>
+									</td>
+									<td>
+										<div class="norms">
+											<span class="norms_num">10 x 真液胶囊面膜1个 #01. 海草 
+												<span class="norms_price">
+													¥0.00
+												</span>
+											</span>
+											
+										</div>
+									</td>
+									<td>
+										<div id="unit_price">
+											<span class="unit_price">
+												¥126.00
+											</span>
+										</div>
+									</td>
+									<td>
+										<div class="amount_box">
+											<button type="submit" class="substract">-</button>
+											<input type="text" name="" id="goods_amount" value="1" disabled="disabled"/>
+											<button type="submit" class="add">+</button>
+										</div>
+									</td>
+									<td><span class="total_price">¥252.00</span></td>
+									<td>
+										<div class="user_action">
+											<a href="" class="my_store">移入我的收藏</a>
+											<br />
+											<a href="" class="my_store">删除</a>
+										</div>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<div class="goods_img">
+											<img src="img/g1.jpg"/>
+										</div>
+										<div class="goods_title">
+											<a href="">INNISFREE 悦诗风吟真液胶囊面膜10个 海草</a>
+										</div>
+									</td>
+									<td>
+										<div class="norms">
+											<span class="norms_num">--
+												<!--<span class="norms_price">
+													¥0.00
+												</span>-->
+											</span>
+											
+										</div>
+									</td>
+									<td>
+										<div id="unit_price">
+											<span class="unit_price">
+												¥126.00
+											</span>
+										</div>
+									</td>
+									<td>
+										<div class="amount_box">
+											<button type="submit" class="substract">-</button>
+											<input type="text" name="" id="goods_amount" value="1" disabled="disabled"/>
+											<button type="submit" class="add">+</button>
+										</div>
+									</td>
+									<td><span class="total_price">¥252.00</span></td>
+									<td>
+										<div class="user_action">
+											<a href="" class="my_store">移入我的收藏</a>
+											<br />
+											<a href="" class="my_store">删除</a>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							
+							<tfoot>
+								<tr>
+									<td colspan="6">
+										<div id="car_price">
+											<span class="total_text">
+												本仓总计：
+											</span>
+											<span class="car_price">
+												¥1,139.00
+											</span>
+										</div>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+						
+					</div>
+				</div>
+				
+				<!--结算区-->
+				<div id="sum_block">
+					<div class="sum_price">
+						<div class="go_to_calc">
+							<a href="">
+								去结算
+							</a>
+						</div>
+						<div class="total_all">
+							<span class="calc_text">
+								总计：
+							</span>
+							<span class="final_price">
+								¥1,154.00
+							</span>
+							<span class="no_mail">
+									(不含运费)
+							</span>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<!--页脚-->
+			<div id="footer">
+				
+				<div id="footer_intro">
+					<div class="intro">
+						<img src="img/genuine.png"/>
+						<p>100%正品</p>
+					</div>
+					<div class="intro">
+						<img src="img/low.png"/>
+						<p>优质低价</p>
+					</div>
+					<div class="intro">
+						<img src="img/deliver.png"/>
+						<p>极速发货</p>
+					</div>
+					<div class="intro">
+						<img src="img/refund.png"/>
+						<p>退换无忧</p>
+					</div>
+				</div>
+				
+				<div id="footer_about">
+					<div id="footer_about_contact">
+						<div id="chat">
+							<img src="img/szj.jpg"/>
+							<p>关于我们</p>
+							<div id="chat_tool">
+								<div id="code">
+									<img src="img/download.png" class="download"/>
+									<img src="img/wechatdownload.png" class="wechatdownload"/>
+									<img src="img/sinadownload.png" class="sinadownload"/>
+								</div>
+								<img src="img/meme.png" class="meme"/>
+								<img src="img/wechat.png" class=""/>
+								<img src="img/sina.png" class=""/>
+							</div>
+						</div>
+						
+						<div id="list">
+							<ul class="list">
+								<li class="list_title">关于美美箱</li>
+								<li><a href="#">美美全球</a></li>
+								<li><a href="#">品牌优势</a></li>
+								<li><a href="#">消费保障</a></li>
+							</ul>
+							<ul class="list">
+								<li class="list_title">帮助中心</li>
+								<li><a href="#">常见问题</a></li>
+								<li><a href="#">账户相关</a></li>
+								<li><a href="#">包邮政策</a></li>
+								<li><a href="#">支付相关</a></li>
+								<li><a href="#">物流相关</a></li>
+								<li><a href="#">退换政策</a></li>
+							</ul>
+							<ul class="list">
+								<li class="list_title">服务协议</li>
+								<li><a href="#">服务协议</a></li>
+								<li><a href="#">个人网申协议</a></li>
+							</ul>
+							<ul class="list">
+								<li class="list_title">联系我们</li>
+								<li><a href="#">商务合作</a></li>
+								<li><a href="#">分销合作</a></li>
+								<li><a href="#">加入我们</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div id="footer_contact">
+					<div class="service">
+						联系我们
+					</div>
+					<div class="way">
+						<span>客服时间:周一~周日(9:00 - 21:00)</span>
+						<span>客服热线:400-720-9967</span>
+						<span>客服邮箱:kf@memeboxglobal.com</span>
+					</div>
+				</div>
+				
+				<div id="footer_legal">
+					<div class="corporation">
+						&copy; 2015 Memebox Corporation.All Rights Reserved.
+					</div>
+					<div class="address">
+						<span><img src="img/icon.gif"/>&nbsp;蜜米柏克思（上海）商贸有限公司 上海市杨浦区政立路415号中航天盛广场A座6楼 沪ICP备14043341号</span>
+					</div>
+			</div>
+		</div>
+	</body>
+</html>

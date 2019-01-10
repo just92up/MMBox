@@ -1,0 +1,86 @@
+[
+	{
+		"id":1,
+		"img":"img/g1.jpg",
+		"band":"Pony Effect",
+		"into":"光彩气垫BB霜 （无替换装）",
+		"price":"99.00",
+		"meprice":"美美箱优惠价",
+		"save":"立省¥0.00"
+	},
+	{	
+		"id":2,
+		"img":"img/g2.jpg",
+		"band":"美美箱",
+		"into":"营养修护面膜10片",
+		"price":"67.00",
+		"meprice":"美美箱优惠价",
+		"save":"立省¥69.00"
+	},
+		{
+		"id":3,
+		"img":"img/g3.jpg",
+		"band":"Pony Effect",
+		"into":"光彩气垫BB霜 （无替换装）",
+		"price":"239.00",
+		"meprice":"美美箱优惠价",
+		"save":"立省¥0.00"
+	},
+	{
+		"id":4,
+		"img":"img/g4.jpg",
+		"band":"美美箱",
+		"into":"营养修护面膜10片",
+		"price":"839.00",
+		"meprice":"美美箱优惠价",
+		"save":"立省¥69.00"
+	},
+		{
+		"id":5,
+		"img":"img/g5.jpg",
+		"band":"Pony Effect",
+		"into":"光彩气垫BB霜 （无替换装）",
+		"price":"209.00",
+		"meprice":"美美箱优惠价",
+		"save":"立省¥0.00"
+	},
+	{
+		"id":6,
+		"img":"img/g6.jpg",
+		"band":"美美箱",
+		"into":"营养修护面膜10片",
+		"price":"189.00",
+		"meprice":"美美箱优惠价",
+		"save":"立省¥69.00"
+	},
+		{
+		"id":7,
+		"img":"img/g7.jpg",
+		"band":"Pony Effect",
+		"into":"光彩气垫BB霜 （无替换装）",
+		"price":"409.00",
+		"meprice":"美美箱优惠价",
+		"save":"立省¥0.00"
+	},
+	{
+		"id":8,
+		"img":"img/g8.jpg",
+		"band":"美美箱",
+		"into":"营养修护面膜10片",
+		"price":"159.00",
+		"meprice":"美美箱优惠价",
+		"save":"立省¥169.00"
+	},
+	
+	
+	{
+		"id":9,
+		"img":"img/g9.jpg",
+		"band":"JAYJUN",
+		"into":"生姜油精华爽肤水",
+		"price":"222.00",
+		"meprice":"¥299.00",
+		"save":"立省¥99.00"
+	}
+
+]

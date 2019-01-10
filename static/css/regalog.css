@@ -1,0 +1,154 @@
+@charset"utf-8";
+
+
+/*公共样式*/
+
+*{margin: 0;font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;}
+ul{list-style: none;margin: 0;padding: 0;}
+
+
+/*topper*/
+#topper{width: 100%;height: 90px;background: white;border-bottom: 1px solid #ddd;}
+#topper #top_box{width: 1172px;height: 50px;margin: 0 auto;padding: 20px 0;}
+#topper #top_box #box_inner{height: 50px;margin-left: 1%;margin-right: 1%;}
+#topper img{margin: 6px 0;cursor: pointer;}
+
+/*logo显示文字*/
+.active{border-radius: 3px;background: #eee;font-size: 14px;}
+
+/*注册区*/
+#main_container{width: 100%;height: 606px;background: #ff6ebb;}
+#content{margin: 0 auto;width: 960px;height: 544px;padding-top: 22px;}
+#register_box,#welfare{width: 480px;height: 544px;float: left;}
+#register_box{background: white;}
+#welfare{background: #ffa3d7;font-family: "Microsoft yahei";}
+
+/*注册区内容*/
+#register_content{font-family: Microsoft Yahei;padding: 80px 98px 72px;}
+#register_content h3{font-size: 22px;font-weight: normal;margin-bottom: 18px;line-height: 22px;}
+#register_content strong{font-size: 24px;vertical-align: bottom;}
+#register_content .input_box{width: 284px;height: 88px;}
+#register_content .input_box input{width: 266px;height: 22px;font-size: 18px;border-radius: 4px;border: 1px solid #afafaf;outline: none;padding: 8px;margin: 5px 0;}
+#register_content .input_box #phone{text-overflow: ellipsis;}
+/*#register_content .input_box #pwd{letter-spacing：8px;}*/
+#register_content .input_box .msg{font-size: 14px;color: #999;}
+#register_content .input_box .msg_length {width: 150px;}
+#register_content .input_box .warm,.min_length,.max_length{font-size: 14px;color: #ee001c;display: none;}
+#register_content .input_box #site{width: 284px;height: 19px;}
+#register_content .input_box #reg{height: 40px;border: none;margin-bottom: 16px;font-size: 20px;width: 284px;border-radius: 3px;background: #fe58a6;color: white;margin-top: 20px;cursor: pointer;letter-spacing: 5px;}
+#register_content .input_box #sms{width: 124px;float: left;}
+#register_content .input_box #short_mes{height: 40px;}
+#register_content .input_box #send_btn{width: 134px;height: 40px;float: left;background: #fe58a6;text-align: center;line-height: 40px;margin-left: 8px;border-radius: 3px;margin-top: 5px;cursor: pointer;}
+#register_content .input_box p{font-size: 15px;width: 284px;text-align: center;}
+#register_content .input_box p span{color: #fe3696;}
+#send_btn a{text-decoration: none;color: white;}
+/*#register_content .input_box #phone{width: 400px;}*/
+
+/*右侧登录区*/
+#login_acount{width: 284px;height: 52px;text-align: center;padding: 84px 98px 32px;}
+#login_acount #have_account{width: 90px;height: 30px;border-right: 1px solid #F9CFE3;display: inline-block;font-size: 18px;color: white;padding-right: 15px;margin-right: 15px;}
+#login_acount #login_btn{width: 100px;height: 32px;font-size: 16px;color: white;border-radius: 3px;border: 0;border: 1px solid #fff;outline: none;background: #ffa3d7;}
+
+#login_acount #login_btn a{font-size: 16px;color: white;text-decoration: none;}
+
+
+
+#welfare img{width: 304px;margin-left: 88px;}
+
+
+
+
+#footer{width: 100%;height: 636px;background: burlywood;margin: 0 auto;}
+
+/*footer*/
+#footer_intro{height: 187px;background: #f3f1f2;border-bottom: 1px solid #ddd;border-top: 1px solid #ddd;}
+#footer_about{height: 241px;background: #ffffff;padding: 40px 0;}
+#footer_contact{height: 48px;background: #ffffff;}
+#footer_legal{height: 36px;background: #ffffff;font-size: 12px;padding: 5px 0;border-top: 1px solid #eaeaea;}
+
+/*footer_intro*/
+#footer .intro{width: 25%;height: 130px;float: left;text-align: center;padding: 40px 0;}
+#footer img{display: block;margin: 0 auto;}
+.intro p{font-size: 20px;font-weight: bold;margin-top: 17px;}
+
+/*footer_about*/
+/*#footer #footer_about_contact{padding: 40px 0;}*/
+#chat{width: 33%;margin: 0;float: left;text-align: center;position: relative;}
+#list{width: 67%;}
+/*#chat img{float: left;}*/
+.us{width: 33%;margin: 0;float: left;font-size: 14px;}
+/*#chat_tool img{float: left;margin-left: ;}*/
+/*#chat_tool{float: left;}*/
+/*#chat_tool img{text-align: center;margin: 0;}*/
+#chat_tool img{display: inline-block;}
+#chat p{margin: 20px 0 10px;font-weight: bold;font-size: 14px;}
+#chat #chat_tool .download,.wechatdownload,.sinadownload{position: absolute;}
+#chat #chat_tool .download{top: 45px;left: 100px;display: none;}
+#chat #chat_tool .wechatdownload{top: 45px;left: 147px;display: none;}
+#chat #chat_tool .sinadownload{top: 45px;left: 195px;display: none;}
+#chat #chat_tool img.active{display: block;}
+
+/*#chat #chat_tool .download{display: none;}*/
+/*#chat #chat_tool .meme{width: ;}*/
+
+
+
+
+#list{width: 67%;float: left;}
+#list .list{width: 24%;float: left;border-left: 1px solid #eaeaea;}
+#list .list .list_title{font-size: 18px;font-weight: bolder;margin-bottom: 10px;}
+#list .list a{font-size: 14px;text-decoration: none;color: #333333;}
+#list .list li{padding: 7px 0;margin-left: 35px;}
+#list .list a:hover{color: #ff5073;}
+
+/*footer_contact*/
+#footer_contact{text-align: center;padding: 15px 0;border-top: 1px solid #eaeaea;color: #333333;}
+#footer_contact .service{font-size: 14px;font-weight: bold;margin-bottom: 10px;}
+#footer_contact .way{font-size: 14px;}
+#footer_contact .way span{margin-right: 30px;}
+
+/*footer_legal*/
+#footer_legal{line-height: 36px;color: #aaaaaa;}
+#footer_legal .corporation{float: left;margin-left: 150px;}
+#footer_legal .address{float: right;margin-right: 130px;}
+#footer_legal .address img{width: 30px;height: 30px;margin: 0;float: left;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

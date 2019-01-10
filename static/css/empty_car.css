@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+
+#empty_block{width: 1172px;height: 370px;margin: 0 auto;padding: 10px 0;font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;}
+#empty_block #empty_title h1{font-size: 20px;font-weight: normal;color: #333;padding: 20px 0 20px 20px;}
+#empty_block #empty_car #empty_content p{font-size: 13px;color: #333333;}
+#empty_block #empty_car #empty_content p a{text-decoration: none;color: #333333;}
+#empty_block #empty_car #empty_content p a:hover{color: #ff5073;}
+
+
+
+
+
