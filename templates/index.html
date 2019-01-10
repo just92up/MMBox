@@ -33,7 +33,7 @@
 
 				<ul id="sideBar_top">
 					<li class="car">
-						<button id="cart"><a href="{% url 'mmbox:show_car' %}"><img src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}" class="hidden_pic"></a></button>
+						{% comment %}<button id="cart">{% endcomment %}<a href="{% url 'mmbox:show_car' %}"><img src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}" class="hidden_pic"></a>{% comment %}</button>{% endcomment %}
 					</li>
 					<li><a><img src="{% static 'img/pesron.png' %}"><img src="{% static 'img/1.png' %}" class="hidden_pic">
 					</a></li>
@@ -85,9 +85,15 @@
 						<span>每月累计签到满10次，即可获得5蜜豆</span>
 					</p>
 					<p class="p2">
+                        {% if username %}
+                            <span>你好：<a href="#">{{ username }}</a></span>
+                            <a href="{% url 'mmbox:logout' %}">退出</a>
+                        {% else %}
+
 						<span><a href="{% url 'mmbox:login' %}">登录</a></span>
 						<span><a href="{% url 'mmbox:register' %}">注册</a></span>
 						<span>|</span>
+                        {% endif %}
 						<img src="{% static 'img/phone.png' %}">
 						<span>手机APP</span>
 						<img src="{% static 'img/supports.png' %}">

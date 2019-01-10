@@ -7,8 +7,8 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/regalog.css' %}"/>
 		<script src="{% static 'js/jquery-1.12.0.js' %}"></script>
 		<script src="{% static 'js/common.js' %}"></script>
-		<script src="{% static 'js/regalog.js' %}"></script>
-		
+{#		<script src="{% static 'js/regalog.js' %}"></script>#}
+
 		<script src="{% static 'js/jquery.cookie.js' %}"></script>
 {#		<script src="{% static 'js/myhome.js' %}"></script>#}
 	</head>
@@ -32,9 +32,11 @@
 					<!--注册框-->
 					<div id="register_box">
 						<div id="register_content">
+                            <form action="{% url 'mmbox:register' %}" method="post">
+                                {% csrf_token %}
 							<h3>注册 <strong>MEMEBOX</strong></h3>
 							<div class="input_box">
-								<input type="text" name="" id="phone" placeholder="手机号码" value="13111121111">
+								<input type="text" name="username" id="phone" placeholder="手机号码" value="13111121111">
 								<div class="msg">
 									请填写有效的手机号码
 								</div>
@@ -43,7 +45,7 @@
 								</div>
 							</div>
 							<div class="input_box">
-								<input type="password" name="" id="pwd" placeholder="密码" maxlength="20" value="111111">
+								<input type="password" name="password" id="pwd" placeholder="密码" maxlength="20" value="111111">
 								<div class="msg">
 									6~16位字符，建议字母加数字组合
 								</div>
@@ -57,7 +59,8 @@
 									长度超出限制范围。
 								</div>
 							</div>
-							<div class="input_box">
+
+{% comment %}							<div class="input_box">
 								<div id="short_mes">
 									<input type="text" name="" id="sms" placeholder="短信验证码" maxlength="5">
 									<div id="send_btn"><a href="#">获取短信验证码</a></div>
@@ -73,12 +76,15 @@
 								<div class="warm wrong_code">
 									请填写正确的短信校验码
 								</div>
-							</div>
+							</div>{% endcomment %}
 
 							<div class="input_box">
+
 								<input type="submit" name="" id="reg" value="注册">
 								<p>注册即表示您已同意<span id="">美美箱用户协议</span></p>
+
 							</div>
+                            </form>
 						</div>
 
 					</div>

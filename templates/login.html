@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
 		<script src="{% static 'js/jquery-1.12.0.js' %}"></script>
 		<script src="{% static 'js/common.js' %}"></script>
-		<script src="{% static 'js/login.js' %}"></script>
+{#		<script src="{% static 'js/login.js' %}"></script>#}
 		
 		<script src="{% static 'js/jquery.cookie.js' %}"></script>
 {#		<script src="{% static 'js/myhome.js' %}"></script>#}
@@ -29,16 +29,19 @@
 				<div id="content">
 					<!--登录区-->
 					<div id="login_box">
+                        <form action="{% url 'mmbox:login' %} " method="post">
+                            {% csrf_token %}
 						<div id="login_content">
 							<h3>登录 <strong>MEMEBOX</strong></h3>
 							<div class="input_box">
-								<input type="text" name="" id="phone" placeholder="邮箱/手机号码">
+								<input type="text" name="username" id="phone" placeholder="邮箱/手机号码">
 								<div class="warm">
 									必填字段
 								</div>
 							</div>
 							<div class="input_box">
-								<input type="password" name="" id="pwd" placeholder="密码" maxlength="16">
+								<input type="password" name="password" id="pwd" placeholder="密码" maxlength="16">
+                                {{ err }}
 								<div class="min_length">
 									最少6位字符
 								</div>
@@ -53,6 +56,7 @@
 								<a href="#">忘记密码？</a>
 							</div>
 						</div>
+                        </form>
 
 					</div>
 

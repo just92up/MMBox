@@ -26,7 +26,7 @@
 
 				<ul id="sideBar_top">
 					<li class="car">
-						<button id="cart"><a><img src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}" class="hidden_pic"></a></button>
+						{% comment %}<button id="cart">{% endcomment %}<a href="{% url  'mmbox:show_car' %}"><img src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}" class="hidden_pic"></a>{% comment %}</button>{% endcomment %}
 					</li>
 					<li><a><img src="{% static 'img/pesron.png' %}"><img src="{% static 'img/1.png' %}" class="hidden_pic">
 					</a></li>
