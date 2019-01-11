@@ -5,7 +5,8 @@ import time
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from Goods.models import User
+from Goods.models import User, Banner
+
 
 #密码加密
 def generate_password(password):
@@ -26,6 +27,7 @@ def generate_token():
 
 
 def index(request):
+    banner = Banner.objects.all()
     token = request.session.get('token')
     users = User.objects.filter(token=token)
     if users.count():
@@ -33,7 +35,7 @@ def index(request):
         username = user.username
     else:
         username = None
-    return render(request,'index.html',context={'username':username})
+    return render(request,'index.html',context={'username':username,'banner':banner})
 
 
 
@@ -97,3 +99,9 @@ def logout(request):
 
 def show_car(request):
     return render(request,'shop_car.html')
+
+#
+# def banner(request):
+#     banner = Banner.objects.all()
+#
+#     return render(request,'index.html',)
