@@ -2,7 +2,7 @@ from django.db import models
 
 #用户信息
 class User(models.Model):
-    username = models.CharField(max_length=100)
+    username = models.CharField(max_length=100,unique=True)
     password = models.CharField(max_length=80)
     # phone = models.CharField(max_length=128,default='xxxxxx')
     # email = models.CharField(max_length=128,default='xxx@xx.com')
@@ -31,6 +31,13 @@ class Goods(models.Model):
 #轮播图图片
 class Banner(models.Model):
     #轮播图图片地址
+    imgaddr = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.imgaddr
+
+#轮播图下广告
+class Advert(models.Model):
     imgaddr = models.CharField(max_length=255)
 
     def __str__(self):

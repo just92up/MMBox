@@ -5,7 +5,7 @@ import time
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from Goods.models import User, Banner
+from Goods.models import User, Banner, Advert, Goods
 
 
 #密码加密
@@ -28,14 +28,23 @@ def generate_token():
 
 def index(request):
     banner = Banner.objects.all()
+    advert = Advert.objects.all()
+    goods = Goods.objects.all()
     token = request.session.get('token')
     users = User.objects.filter(token=token)
+
     if users.count():
         user = users.first()
         username = user.username
     else:
         username = None
-    return render(request,'index.html',context={'username':username,'banner':banner})
+    data = {
+        'username': username,
+        'banner': banner,
+        'advert': advert,
+        'goods': goods
+    }
+    return render(request,'index.html',context=data)
 
 
 
@@ -84,7 +93,7 @@ def login(request):
             user.save()
 
             request.session['token'] = user.token
-            request.session.set_expiry(60)
+            request.session.set_expiry(60*60)
 
             return response
         else:
@@ -98,10 +107,77 @@ def logout(request):
 
 
 def show_car(request):
-    return render(request,'shop_car.html')
+
+    token = request.session.get('token')
+    users = User.objects.filter(token=token)
+
+
+    if users.count():
+        user = users.first()
+        username = user.username
+    else:
+        username = None
+    data = {
+        'username':username
+    }
+    return render(request,'shop_car.html',context=data)
 
 #
 # def banner(request):
 #     banner = Banner.objects.all()
 #
 #     return render(request,'index.html',)
+def goods_detail(request,goodid):
+    good = Goods.objects.get(id = goodid)
+    name =  good.name
+    price = good.price
+    picture = good.picture
+    introduce = good.introduce
+    token = request.session.get('token')
+    users = User.objects.filter(token=token)
+
+    if users.count():
+        user = users.first()
+        username = user.username
+    else:
+        username = None
+    data = {
+        'good':good,
+        'username':username,
+        'name':name,
+        'price':price,
+        'picture':picture,
+        'introduce':introduce,
+    }
+    print(goodid)
+    return render(request,'goods_detail.html',context=data)
+
+
+def shop_car(request,userid):
+    user = User.objects.get(id=userid)
+    good = user.goods_set.all()
+    print("---------------:")
+
+    token = request.session.get('token')
+    users = User.objects.filter(token=token)
+    print("---------------:"+sum)
+    if users.count():
+        user = users.first()
+        username = user.username
+    else:
+        username = None
+    sum = 0
+    for i in good:
+        sum += i.price
+    total = sum
+    data ={
+        'good':good,
+        'username':username,
+        'total':total,
+    }
+    return render(request, 'shop_car.html',context=data)
+
+
+def empty_car(request):
+    return render(request, 'empty_car.html')
+

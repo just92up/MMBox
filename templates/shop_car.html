@@ -76,9 +76,17 @@
 						<span>每月累计签到满10次，即可获得5蜜豆</span>
 					</p>
 					<p class="p2">
-						<span><a href="login.html">登录</a></span>
-						<span><a href="register.html">注册</a></span>
-						<span>|</span>
+
+
+                {% if username %}
+                    <span>你好：<a href="#">{{ username }}</a></span>
+                    <a href="{% url 'mmbox:logout' %}">退出</a>
+                {% else %}
+
+                    <span><a href="{% url 'mmbox:login' %}">登录</a></span>
+                    <span><a href="{% url 'mmbox:register' %}">注册</a></span>
+                    <span>|</span>
+                {% endif %}
 						<img src="{% static 'img/phone.png' %}">
 						<span>手机APP</span>
 						<img src="{% static 'img/supports.png' %}">
@@ -123,13 +131,14 @@
 
 							<tfoot>
 								<tr>
+
 									<td colspan="6">
 										<div id="car_price">
 											<span class="total_text">
 												本仓总计：
 											</span>
 											<span class="car_price">
-												¥
+												¥{{ total}}
 											</span>
 										</div>
 									</td>
@@ -155,6 +164,7 @@
 								总计：
 							</span>
 							<span class="final_price">
+                                {{ total }}
 								<!--¥1,154.00-->
 							</span>
 							<span class="no_mail">
