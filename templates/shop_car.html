@@ -26,7 +26,7 @@
 
 				<ul id="sideBar_top">
 					<li class="car">
-						{% comment %}<button id="cart">{% endcomment %}<a href="{% url  'mmbox:show_car' %}"><img src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}" class="hidden_pic"></a>{% comment %}</button>{% endcomment %}
+						{% comment %}<button id="cart">{% endcomment %}<a href="{% url  'mmbox:shop_car' userid%}"><img src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}" class="hidden_pic"></a>{% comment %}</button>{% endcomment %}
 					</li>
 					<li><a><img src="{% static 'img/pesron.png' %}"><img src="{% static 'img/1.png' %}" class="hidden_pic">
 					</a></li>
@@ -101,7 +101,7 @@
 			<div id="title">
 				<div id="car_head">
 					<div id="logo">
-						<a href="index.html"><img src="{% static 'img/new-logo_memebox-china.png' %}"></a>
+						<a href="{% url 'mmbox:index' %}"><img src="{% static 'img/new-logo_memebox-china.png' %}"></a>
 					</div>
 					<div id="progress">
 
@@ -161,11 +161,11 @@
 						</div>
 						<div class="total_all">
 							<span class="calc_text">
-								总计：
+								总计：{{ total }}
 							</span>
 							<span class="final_price">
                                 {{ total }}
-								<!--¥1,154.00-->
+{#								<!--¥1,154.00-->#}
 							</span>
 							<span class="no_mail">
 									(不含运费)

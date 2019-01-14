@@ -248,8 +248,8 @@ $(function(){
 //			location.href="login.html";
 //		}
 		
-		alert("请先登录！");
-		location.href="login.html";
+		// alert("请先登录！");
+		// location.href="../login";
 	})
 	
 	

@@ -2,6 +2,7 @@ import hashlib
 import random
 import time
 
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -31,8 +32,8 @@ def index(request):
     advert = Advert.objects.all()
     goods = Goods.objects.all()
     token = request.session.get('token')
+    userid =request.session.get('userid')
     users = User.objects.filter(token=token)
-
     if users.count():
         user = users.first()
         username = user.username
@@ -42,7 +43,7 @@ def index(request):
         'username': username,
         'banner': banner,
         'advert': advert,
-        'goods': goods
+        'goods': goods,
     }
     return render(request,'index.html',context=data)
 
@@ -87,7 +88,7 @@ def login(request):
         if users.count():
             #成功，重定向到首页，保持登录状态
             response = redirect('mmbox:index')
-
+            print(users)
             user = users.first()
             user.token = generate_token()
             user.save()
@@ -107,10 +108,10 @@ def logout(request):
 
 
 def show_car(request):
-
     token = request.session.get('token')
     users = User.objects.filter(token=token)
 
+    goods_list = users.goods_set.all()
 
     if users.count():
         user = users.first()
@@ -118,7 +119,8 @@ def show_car(request):
     else:
         username = None
     data = {
-        'username':username
+        'username':username,
+        'goods_list':goods_list,
     }
     return render(request,'shop_car.html',context=data)
 
@@ -152,21 +154,21 @@ def goods_detail(request,goodid):
     print(goodid)
     return render(request,'goods_detail.html',context=data)
 
-
+#展示购物车
 def shop_car(request,userid):
     user = User.objects.get(id=userid)
-    good = user.goods_set.all()
+    good = user.goods_set .all()
     print("---------------:")
-
+    sum = 0
     token = request.session.get('token')
     users = User.objects.filter(token=token)
-    print("---------------:"+sum)
+
     if users.count():
         user = users.first()
         username = user.username
     else:
         username = None
-    sum = 0
+
     for i in good:
         sum += i.price
     total = sum
@@ -174,10 +176,29 @@ def shop_car(request,userid):
         'good':good,
         'username':username,
         'total':total,
+        'userid':user.id
     }
+    print("---------------:", data)
     return render(request, 'shop_car.html',context=data)
 
 
 def empty_car(request):
     return render(request, 'empty_car.html')
 
+#添加商品到购物车
+def addcart(request,userid,goodid):
+    user = User.objects.filter(id = userid)
+    goods = Goods.objects.filter(id = goodid)
+
+    goods.user.add(user)
+
+    return HttpResponse('添加到购物车成功')
+
+#添加收藏
+def addcollect(request,userid,goodid):
+    goods = Goods.objects.filter(id=goodid)
+    user = User.objects.filter(id=userid)
+
+    goods.user.add(user)
+
+    return HttpResponse('商品收藏成功!')

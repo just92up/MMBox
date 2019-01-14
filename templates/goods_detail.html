@@ -35,8 +35,8 @@
 
         <ul id="sideBar_top">
             <li class="car">
-                <button id="cart"><a href="{% url 'mmbox:shop_car' good.id %}"><img src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}"
-                                                                                 class="hidden_pic"></a></button>
+                {% comment %}<button id="cart">{% endcomment %}<a href="{% url 'mmbox:shop_car' good.id %}"><img src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}"
+                                                                                 class="hidden_pic"></a>{% comment %}</button>{% endcomment %}
             </li>
             <li><a href="#"><img src="{% static 'img/pesron.png' %}"><img src="{% static 'img/1.png' %}"
                                                                           class="hidden_pic">
@@ -108,7 +108,7 @@
     <div id="head">
         <div id="main_contain">
             <div id="head_main">
-                <a href="index.html"><img name="美美箱" class="logo"
+                <a href="{% url 'mmbox:index' %}"><img name="美美箱" class="logo"
                                           src="{% static 'img/new-logo_memebox-china.png' %}"></a>
                 <div id="search">
                     <input type="text" name="" class="search" value="">
@@ -238,27 +238,27 @@
             <div id="goods_pic">
                 <div id="big_block">
                     <img src="{% static 'img/mail.png' %}" class="mail">
-                    <!--小图片-->
-                    <!--<a href="#">-->
+{#                    <!--小图片-->#}
+{#                    <!--<a href="#">-->#}
                     <div id="small_img">
-                        <!--<img src="img/bliuhaizhen.jpg"/>-->
+{#                        <!--<img src="img/bliuhaizhen.jpg"/>-->#}
                         <img src="{{ picture }}"/>
                         <div id="small_area" style="width: 125px; height: 125px;">
 
                         </div>
                     </div>
-                    <!--</a>-->
+{#                    <!--</a>-->#}
                 </div>
                 <!--放大图片-->
                 <div id="big_area" style="">
                     <div id="big_img">
-                        <!--<img src="img/bliuhaizhen.jpg"/>-->
+{#                        <!--<img src="img/bliuhaizhen.jpg"/>-->#}
                         <img src="{{ picture }}"/>
                     </div>
                 </div>
                 <div id="small_block">
                     <a href="#">
-                        <!--<img src="img/sliuhaizhen.jpg"/>-->
+{#                        <!--<img src="img/sliuhaizhen.jpg"/>-->#}
                         <img src="{{ picture }}"/>
                     </a>
                 </div>
@@ -267,7 +267,7 @@
 
         <div id="right_block">
             <div id="goods_chase">
-                <!--<h1>JAYJUN明星款面膜礼盒</h1>-->
+{#                <!--<h1>JAYJUN明星款面膜礼盒</h1>-->#}
             </div>
             <div id="area">
                 <span class="icon"></span>

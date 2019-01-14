@@ -11,7 +11,8 @@ class User(models.Model):
     def __str__(self):
         return self.username
 
-#商品
+#商品购买
+
 class Goods(models.Model):
     #商品名称
     name = models.CharField(max_length=100)
@@ -22,11 +23,45 @@ class Goods(models.Model):
     #商品描述及说明
     introduce = models.CharField(max_length=255,default='no introduce')
 
-    #声明关系，多对多
     user = models.ManyToManyField(User)
-
     def __str__(self):
         return self.name
+
+
+#商品购买
+# class GoodsBuy(models.Model):
+#     #商品名称
+#     name = models.CharField(max_length=100)
+#     #价格
+#     price = models.IntegerField()
+#     #商品图片
+#     picture = models.CharField(max_length=128)
+#     #商品描述及说明
+#     introduce = models.CharField(max_length=255,default='no introduce')
+#
+#     #声明关系，多对多
+#     userbuy = models.ManyToManyField(User)
+#
+#
+#     def __str__(self):
+#         return self.name
+# #商品收藏
+# class GoodsCollect(models.Model):
+#     #商品名称
+#     name = models.CharField(max_length=100)
+#     #价格
+#     price = models.IntegerField()
+#     #商品图片
+#     picture = models.CharField(max_length=128)
+#     #商品描述及说明
+#     introduce = models.CharField(max_length=255,default='no introduce')
+#
+#     #声明关系，多对多
+#     usercollect = models.ManyToManyField(User)
+#
+#     def __str__(self):
+#         return self.name
+
 
 #轮播图图片
 class Banner(models.Model):
