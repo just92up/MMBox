@@ -2,7 +2,7 @@ import hashlib
 import random
 import time
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -32,7 +32,7 @@ def index(request):
     advert = Advert.objects.all()
     goods = Goods.objects.all()
     token = request.session.get('token')
-    userid =request.session.get('userid')
+
     users = User.objects.filter(token=token)
     if users.count():
         user = users.first()
@@ -107,22 +107,30 @@ def logout(request):
     return response
 
 
-def show_car(request):
+def shop_car(request):
     token = request.session.get('token')
     users = User.objects.filter(token=token)
+    user_goods = User.objects.get(token=token)
 
-    goods_list = users.goods_set.all()
+    goods_list = user_goods.goods_set.all()
+    print(goods_list)
 
     if users.count():
         user = users.first()
         username = user.username
+        data = {
+            'username': username,
+            'goods_list': goods_list,
+        }
+        return render(request, 'shop_car.html', context=data)
     else:
         username = None
-    data = {
-        'username':username,
-        'goods_list':goods_list,
-    }
-    return render(request,'shop_car.html',context=data)
+        data = {
+            'username': username,
+            'goods_list': goods_list,
+        }
+        return render(request, 'empty_car.html', context=data)
+        # return HttpResponse('请登录后查看购物车')
 
 #
 # def banner(request):
@@ -155,31 +163,31 @@ def goods_detail(request,goodid):
     return render(request,'goods_detail.html',context=data)
 
 #展示购物车
-def shop_car(request,userid):
-    user = User.objects.get(id=userid)
-    good = user.goods_set .all()
-    print("---------------:")
-    sum = 0
-    token = request.session.get('token')
-    users = User.objects.filter(token=token)
-
-    if users.count():
-        user = users.first()
-        username = user.username
-    else:
-        username = None
-
-    for i in good:
-        sum += i.price
-    total = sum
-    data ={
-        'good':good,
-        'username':username,
-        'total':total,
-        'userid':user.id
-    }
-    print("---------------:", data)
-    return render(request, 'shop_car.html',context=data)
+# def shop_car(request,userid):
+#     user = User.objects.get(id=userid)
+#     good = user.goods_set .all()
+#     print("---------------:")
+#     sum = 0
+#     token = request.session.get('token')
+#     users = User.objects.filter(token=token)
+#
+#     if users.count():
+#         user = users.first()
+#         username = user.username
+#     else:
+#         username = None
+#
+#     for i in good:
+#         sum += i.price
+#     total = sum
+#     data ={
+#         'good':good,
+#         'username':username,
+#         'total':total,
+#         'userid':user.id
+#     }
+#     print("---------------:", data)
+#     return render(request, 'shop_car.html',context=data)
 
 
 def empty_car(request):
@@ -202,3 +210,18 @@ def addcollect(request,userid,goodid):
     goods.user.add(user)
 
     return HttpResponse('商品收藏成功!')
+
+
+def checkphonenum(request):
+    phonenum = request.GET.get('phonenum')
+    users = User.objects.filter(username=phonenum)
+    if users.exists():
+        return JsonResponse({
+            'msg0':'账号已被注册',
+            'status':0
+        })
+    else:
+        return JsonResponse({
+            'msg1':'账号可用',
+            'status':1
+        })
