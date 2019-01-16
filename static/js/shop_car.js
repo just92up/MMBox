@@ -1,7 +1,7 @@
 $(function(){
 	//结算条吸顶
 //	$(".sum_price").addClass(".attach");
-	$(".sum_price").css({"position":"fixed",bottom:0,margin:0});
+// 	$(".sum_price").css({"position":"fixed",bottom:0,margin:0});
 	$(window).scroll(function(){
 		var scroll_top=$(document).scrollTop();
 		var sumTop=$("#sum_block").offset().top-$(window).height();

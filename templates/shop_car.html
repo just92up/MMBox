@@ -10,7 +10,7 @@
 		<script src="{% static 'js/common.js' %}"></script>
 		
 		<!--购物车页面js-->
-		<script src="{% static 'js/shop_car.js' %}"></script>
+{#		<script src="{% static 'js/shop_car.js' %}"></script>#}
 		<script src="{% static 'js/jquery.cookie.js' %}"></script>
 		
 		<!--飞到购物车-->
@@ -118,15 +118,28 @@
 							<thead>
 								<tr>
 									<th class="loacl"><span><img src="{% static 'img/soon.png' %}"></span><span class="zone">中国仓</span><span class="fee_mail">满99元包邮</span></th>
-									<th class="format">规格</th>
+									<th class="format">名称</th>
 									<th class="o_price">单价（元）</th>
-									<th class="goods_amounts">数量</th>
+									<th class="format">数量</th>
 									<th class="price">金额（元）</th>
 									<th class="action">操作</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody >
 
+                                {% for cart in carts %}
+                                    <tr >
+                                    <td class="goods_img "><img src='{{ cart.goods.picture}}'></td>
+									<td class="format">{{ cart.goods.name }}</td>
+									<td class="o_price">{{ cart.goods.price }}.00</th>
+									<td class="format">{{ cart.number }}</td>
+									<td class="price">{{ simplegoods.0 }}</td>
+									<td class="action">
+                                        <button id="subgoods" goodsid="{{ cart.goods.id }}">-</button>
+                                        <button  id="addgoods" goodsid="{{ cart.goods.id }}">+</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
 							</tbody>
 
 							<tfoot>
@@ -161,7 +174,7 @@
 						</div>
 						<div class="total_all">
 							<span class="calc_text">
-								总计：{{ total }}
+								总计：
 							</span>
 							<span class="final_price">
                                 {{ total }}

@@ -1,72 +1,296 @@
 @charset "utf-8";
 
-#title{width: 1172px;height: 86px;margin: 0 auto;}
-#title #car_head{margin-left: 1%;padding: 23px 0;}
-#car_container{width: 1172px;margin: 0 auto;}
+#title {
+    width: 1172px;
+    height: 86px;
+    margin: 0 auto;
+}
+
+#title #car_head {
+    margin-left: 1%;
+    padding: 23px 0;
+}
+
+#car_container {
+    width: 1172px;
+    margin: 0 auto;
+}
+
 /*#car_container table thead{border: 1px solid  black;}
 #car_container table{width: 1000px;height: 200px;border: 1px solid  black;}
 #car_container table td{border-bottom: 1px solid  black;text-align: center;}*/
 
 /*#car_container table thead .one{text-align: left;}*/
-#car_container table{width: 1172px;    border-collapse: collapse;margin-bottom: 20px;}
+#car_container table {
+    width: 1172px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
 /*thead*/
-#car_container table thead{color: #666;background: #f5f5f5;border: 1px solid #e5e5e5;}
-#car_container table thead tr .loacl{text-align: left;padding-left: 12px;width: 443px;}
-#car_container table thead tr .loacl img{position: relative;top: 6px;}
-#car_container table thead tr th{font-size: 14px;font-weight: normal;line-height: 27px;padding: 8px 10px 8px 10px;}
+#car_container table thead {
+    color: #666;
+    background: #f5f5f5;
+    border: 1px solid #e5e5e5;
+}
 
-#car_container table thead tr th .zone{font-size: 18px;font-weight: normal;margin-right: 15px;}
-#car_container table thead tr th .fee_mail{font-size: 14px;font-weight: normal;}
+#car_container table thead tr .loacl {
+    text-align: left;
+    padding-left: 12px;
+    width: 443px;
+}
 
-#car_container table thead tr .format,.action{width: 155px;}
-#car_container table thead tr .o_price,.goods_amounts,.price{width: 97px;}
+#car_container table thead tr .loacl img {
+    position: relative;
+    top: 6px;
+/
+}
+
+#car_container table thead tr th {
+    /*height: 50px;*/
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 27px;
+    padding: 8px 10px 8px 10px;
+}
+
+#car_container table thead tr th .zone {
+    font-size: 18px;
+    font-weight: normal;
+    margin-right: 15px;
+}
+
+#car_container table thead tr th .fee_mail {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#car_container table thead tr .format, .action {
+    width: 155px;
+}
+
+#car_container table thead tr .o_price, .goods_amounts, .price {
+    width: 97px;
+}
 
 /*tbody*/
-#car_container table tbody tr{border: 1px solid #e5e5e5;}
-#car_container table tbody tr td{padding: 0;text-align: center;}
-#car_container table tbody tr td .goods_img{float: left;padding-right: 25px;padding-left: 12px;height: 80px;}
-#car_container table tbody tr td .goods_img img{width: 80px;height: 80px;border: 1px solid #e5e5e5;}
-#car_container table tbody tr td .goods_title{float: left;font-size: 14px;}
-#car_container table tbody tr td .goods_title a{text-decoration: none;color: #333333;}
-#car_container table tbody tr td .goods_title a:hover{color: #ff5073;}
-#car_container table tbody tr td .norms_num{font-size:13px;}
-#car_container table tbody tr td .norms_price{font-size:14px;}
-#car_container table tbody tr td .unit_price{font-size:14px;}
-#car_container table tbody tr td .amount_box{display: inline-block;}
-#car_container table tbody tr td .amount_box .goods_amounts{width: 42px;height: 18px;text-align: center;border: 1px solid #e5e5e5;padding: 1px;color: #333;font-family: verdana;background: white;}
-#car_container table tbody tr td .amount_box button{height: 22px;line-height: 22px;width: 17px;color: #666;text-align: center;background: #fff;border: 1px solid #e5e5e5;font: 12px/15px Arial, Helvetica, sans-serif;}
-#car_container table tbody tr td .amount_box .substract{border-right: 0;}
-#car_container table tbody tr td .amount_box .add{border-left: 0;}
-#car_container table tbody tr td .amount_box button,.goods_amounts{float: left;outline: none;}
-#car_container table tbody tr td .price_rmb{font-size: 14px;color: #ff7753;}
-#car_container table tbody tr td .user_action a{text-decoration: none;color: #333333;font-weight: normal;font-size: 13px;}
-#car_container table tbody tr td .user_action a:hover{color: #ff5073;}
-#car_container table tbody tr td{padding: 15px 8px;}
+#car_container table tbody tr {
+    border: 1px solid #e5e5e5;
+}
+
+#car_container table tbody tr td {
+    padding: 0;
+    text-align: center;
+}
+/*#car_container table tbody tr td */
+.goods_img {
+    float: left;
+    /*padding-right: 5px;*/
+
+    padding-left: 300px;
+    width: 250px;
+    height: 60px;
+    margin: 0;
+}
+
+.goods_img img {
+    width: 50px;
+    height: 50px;
+    /*padding-left: 12px;*/
+    padding: 0;
+    border: 1px solid #e5e5e5;
+}
+
+#car_container table tbody tr td .goods_title {
+    float: left;
+    font-size: 14px;
+}
+
+#car_container table tbody tr td .goods_title a {
+    text-decoration: none;
+    color: #333333;
+}
+
+#car_container table tbody tr td .goods_title a:hover {
+    color: #ff5073;
+}
+
+#car_container table tbody tr td .norms_num {
+    font-size: 13px;
+}
+
+#car_container table tbody tr td .norms_price {
+    font-size: 14px;
+}
+
+#car_container table tbody tr td .unit_price {
+    font-size: 14px;
+}
+
+#car_container table tbody tr td .amount_box {
+    display: inline-block;
+}
+
+#car_container table tbody tr td .amount_box .goods_amounts {
+    width: 42px;
+    height: 18px;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    padding: 1px;
+    color: #333;
+    font-family: verdana;
+    background: white;
+}
+
+#car_container table tbody tr td .amount_box button {
+    height: 22px;
+    line-height: 22px;
+    width: 17px;
+    color: #666;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    font: 12px/15px Arial, Helvetica, sans-serif;
+}
+
+#car_container table tbody tr td .amount_box .substract {
+    border-right: 0;
+}
+
+#car_container table tbody tr td .amount_box .add {
+    border-left: 0;
+}
+
+#car_container table tbody tr td .amount_box button, .goods_amounts {
+    float: left;
+    outline: none;
+}
+
+#car_container table tbody tr td .price_rmb {
+    font-size: 14px;
+    color: #ff7753;
+}
+
+#car_container table tbody tr td .user_action a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+#car_container table tbody tr td .user_action a:hover {
+    color: #ff5073;
+}
+
+#car_container table tbody tr td {
+    padding: 15px 8px;
+}
 
 /*tfoot*/
-#car_container table tfoot{border: 1px solid #e5e5e5;}
-#car_container table tfoot tr td #car_price{text-align: right;padding: 15px 30px;height: 22px;}
-#car_container table tfoot tr td .total_text{font-size: 14px;color: #666;}
-#car_container table tfoot tr td .car_price{font-size: 20px;color: #ff5073;}
+#car_container table tfoot {
+    border: 1px solid #e5e5e5;
+}
 
+#car_container table tfoot tr td #car_price {
+    text-align: right;
+    padding: 15px 30px;
+    height: 22px;
+}
+
+#car_container table tfoot tr td .total_text {
+    font-size: 14px;
+    color: #666;
+}
+
+#car_container table tfoot tr td .car_price {
+    font-size: 20px;
+    color: #ff5073;
+}
 
 /*结算*/
-#sum_block{width: 1172px;height: 60px;text-align: center;margin-bottom: 10px;position: relative;}
-#sum_block .total_all,.go_to_calc{float: right;}
-#sum_block .total_all{line-height: 30px;padding: 15px 35px 15px 30px;}
-#sum_block .total_all span{display: inline-block;}
-#sum_block .calc_text{font-size: 14px;color: #666;}
-#sum_block .final_price{font-size: 28px;color: #ff5073;}
-#sum_block .no_mail{font-size: 14px;color: #333333;}
-#sum_block .go_to_calc{font-size: 18px;background-color: #ff5073;color: #fff;width: 120px;height: 30px;line-height: 30px;padding: 15px 20px;font-size: 18px;}
-#sum_block .go_to_calc a{text-decoration: none;color: #fff;}
-#sum_block .sum_price{width: 1172px;height: 60px;border: 1px #e5e5e5 solid;background-color: #f5f5f5;position: relative;}
-#sum_block .attach{position: fixed;bottom: 0;margin: 0;}
- 
+#sum_block {
+    width: 1172px;
+    height: 60px;
+    text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#sum_block .total_all, .go_to_calc {
+    float: right;
+}
+
+#sum_block .total_all {
+    line-height: 30px;
+    padding: 15px 35px 15px 30px;
+}
+
+#sum_block .total_all span {
+    display: inline-block;
+}
+
+#sum_block .calc_text {
+    font-size: 14px;
+    color: #666;
+}
+
+#sum_block .final_price {
+    font-size: 28px;
+    color: #ff5073;
+}
+
+#sum_block .no_mail {
+    font-size: 14px;
+    color: #333333;
+}
+
+#sum_block .go_to_calc {
+    font-size: 18px;
+    background-color: #ff5073;
+    color: #fff;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    padding: 15px 20px;
+    font-size: 18px;
+}
+
+#sum_block .go_to_calc a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#sum_block .sum_price {
+    width: 1172px;
+    height: 60px;
+    border: 1px #e5e5e5 solid;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+#sum_block .attach {
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+}
 
 /*商品id*/
-#car_container table tbody tr .goodsId{display: none;}
+#car_container table tbody tr .goodsId {
+    display: none;
+}
 
+/*#myimg {*/
+    /*width: 100%;*/
+    /*height: 50rem;*/
+/*}*/
+
+/*#myimg img {*/
+    /*padding: 4px;*/
+    /*border: 1px solid #eee;*/
+    /*margin: 0 2px 4px;*/
+    /*width: 65px;*/
+    /*height: 65px;*/
+/*}*/
 
 
 

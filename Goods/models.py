@@ -28,6 +28,14 @@ class Goods(models.Model):
         return self.name
 
 
+
+#购物车中间表
+class Cart(models.Model):
+    user = models.ForeignKey(User)
+    goods = models.ForeignKey(Goods)
+    number = models.IntegerField()
+    isselect = models.BooleanField(default=True)
+
 #商品购买
 # class GoodsBuy(models.Model):
 #     #商品名称

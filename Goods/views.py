@@ -6,7 +6,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from Goods.models import User, Banner, Advert, Goods
+from Goods.models import User, Banner, Advert, Goods, Cart
 
 
 #密码加密
@@ -107,30 +107,6 @@ def logout(request):
     return response
 
 
-def shop_car(request):
-    token = request.session.get('token')
-    users = User.objects.filter(token=token)
-    user_goods = User.objects.get(token=token)
-
-    goods_list = user_goods.goods_set.all()
-    print(goods_list)
-
-    if users.count():
-        user = users.first()
-        username = user.username
-        data = {
-            'username': username,
-            'goods_list': goods_list,
-        }
-        return render(request, 'shop_car.html', context=data)
-    else:
-        username = None
-        data = {
-            'username': username,
-            'goods_list': goods_list,
-        }
-        return render(request, 'empty_car.html', context=data)
-        # return HttpResponse('请登录后查看购物车')
 
 #
 # def banner(request):
@@ -162,45 +138,111 @@ def goods_detail(request,goodid):
     print(goodid)
     return render(request,'goods_detail.html',context=data)
 
-#展示购物车
-# def shop_car(request,userid):
-#     user = User.objects.get(id=userid)
-#     good = user.goods_set .all()
-#     print("---------------:")
-#     sum = 0
-#     token = request.session.get('token')
-#     users = User.objects.filter(token=token)
-#
-#     if users.count():
-#         user = users.first()
-#         username = user.username
-#     else:
-#         username = None
-#
-#     for i in good:
-#         sum += i.price
-#     total = sum
-#     data ={
-#         'good':good,
-#         'username':username,
-#         'total':total,
-#         'userid':user.id
-#     }
-#     print("---------------:", data)
-#     return render(request, 'shop_car.html',context=data)
 
-
+#空购物车
 def empty_car(request):
     return render(request, 'empty_car.html')
 
+#购物车
+def shop_car(request):
+    token = request.session.get('token')
+    if token:
+        user = User.objects.get(token=token)
+        carts = Cart.objects.filter(user=user).exclude(number=0)
+        username =user.username
+        total = 0
+        simplegoods = []
+        for mygoods in carts:
+            total1 = mygoods.number*mygoods.goods.price
+            total =total+total1
+            simplegoods.append(total1)
+
+        data = {
+            'carts':carts,
+            'username': username,
+            'total':total,
+            'simplegoods':simplegoods
+        }
+        return render(request,'shop_car.html',context=data)
+    else:
+        return redirect('mmbox:login')
+
+
+
+
 #添加商品到购物车
-def addcart(request,userid,goodid):
-    user = User.objects.filter(id = userid)
-    goods = Goods.objects.filter(id = goodid)
+def addcart(request):
+    token = request.session.get('token')
+    if token:
+        user = User.objects.get(token=token)
+        goodsid = request.GET.get('goodsid')
+        goods = Goods.objects.get(pk=goodsid)
 
-    goods.user.add(user)
+        #初次添加,新增记录;非初次则更新修改number
 
-    return HttpResponse('添加到购物车成功')
+        #判断商品是否存在
+        carts = Cart.objects.filter(user=user).filter(goods=goods)
+        # total = 0
+        # for i in carts:
+        #     total = i.number*i.goods.price
+
+        if carts.exists():
+            cart = carts.first()
+            cart.number = cart.number + 1
+            cart.save()
+        else:
+            cart = Cart()
+            cart.user = user
+            cart.goods = goods
+            cart.number = 1
+            cart.save()
+        data = {
+            'msg':'-{}添加购物车成功'.format(goods.name),
+            'status':1,
+            'number':cart.number,
+            # 'total':total
+        }
+
+        return JsonResponse(data)
+    else:#未登录则跳转到登录页面
+        data = {
+            'msg':'请先登录!',
+            'status':0
+
+        }
+        return JsonResponse(data)
+
+
+
+
+#从购物车减掉对应商品
+def subcart(request):
+    print("1111111111111111111")
+    token = request.session.get('token')
+    user = User.objects.get(token=token)
+
+    goodsid = request.GET.get('goodsid')
+    goods = Goods.objects.get(pk=goodsid)
+
+    cart = Cart.objects.filter(user=user).filter(goods=goods).first()
+    cart.number = cart.number - 1
+    cart.save()
+    # total = 0
+    # for i in cart:
+    #     total = i.number * i.goods.price
+    data = {
+        'msg':'{}-商品删减成功'.format(goods.name),
+        'status': 1,
+        'number': cart.number,
+        # 'total':total
+    }
+
+    return JsonResponse(data)
+
+
+#改变购物车商品选中状态
+def changecartstatus(request):
+    return None
 
 #添加收藏
 def addcollect(request,userid,goodid):
@@ -225,3 +267,5 @@ def checkphonenum(request):
             'msg1':'账号可用',
             'status':1
         })
+
+

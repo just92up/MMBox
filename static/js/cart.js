@@ -1,80 +1,104 @@
 $(function(){
-	
-	
-	//购物车商品点击保存到cookie事件函数
-		//(声明变量赋值/不赋值)当前点击商品某父元素下要保存到cookie的html()内容
-		//***** (三目)声明存在相同商品的数组变量 *****
-		
-		//存在相同商品: 遍历商品数组 -- 当商品数组中某个商品id == 上面声明的数组的id值
-									//id相同的商品的cookie的num属性值增加
-		//不存在相同商品：声明单件商品 -- 声明单件商品 -- 用对象键值保存要保存到cookie的商品的内容
-									//将每次的新商品推入数组中
-		//将商品数组转化为字符串存入cookie
-	
-	
-	
-//	console.log(1)
+	//    添加到购物车操作
+    $('.addToCart').click(function (e) {
 
-	//将 *首页商品列表中* 点击的 *当前商品* 保存到cookie中
-	
-	//点击加入购物车按钮
-	$(".addToCart").click(function(){
-//		console.log(1)；
-		//得到***** 当前点击元素的父元素下要保存到cookie的内容 *****
-		//要保存到啊cookie的点击商品的数据内容
-		var goodsId=$(this).parent().parent().find(".goods_id").html();
-		var goodsImg=$(this).parent().parent().find(".picture img").attr("src");
-		var goodsBand=$(this).parent().parent().find(".goods_name h4").html();
-		var goodsInto=$(this).parent().parent().find(".goods_name h3").html();
-		var goodsPrice=$(this).parent().find(".cur_price").html();
-		
-		//***** (三目)声明存在相同商品的数组变量 *****
-		var goodsList = $.cookie("cart") ? JSON.parse( $.cookie("cart") ) : [];
-		
-		//声明存在相同商品
-		var isExists=false;
-		
-		//商品已存在 -- 增加他的num属性的值
-		
-		//遍历cookie数据，当匹配得到的与点击商品id相同的商品
-		for(i=0;i<goodsList.length;i++){
-			//商品数组中某个商品id == 上面声明的数组的id值
-			if(goodsList[i].id == goodsId){
-				//id相同的商品的cookie的num属性值增加
-				goodsList[i].num++;
-				isExists=true;
-			}
-		}
-		
-		//不存在相同商品则保存到cookie中
-		if(!isExists){
-			//声明单件商品json -- 用对象键值形式保存到cookie的商品的内容
-			var goods={
-				id:goodsId,
-				img:goodsImg,
-				band:goodsBand,
-				into:goodsInto,
-				price:goodsPrice,
-				num:1
-			}
-			//将每次的新商品推入数组中
-			goodsList.push(goods);
-		}
-		
-		//将商品数组转化为字符串存入cookie
-		$.cookie("cart",JSON.stringify(goodsList),{expires:22,path:"/"});
-		console.log($.cookie("cart"))
-		
-	})
-	
-	
-	
-	
-	
-	//点击侧边栏购物车按钮跳转到购物车页面
-	$("#cart").click(function(){
-		location.href="shop_car.html";
-	})
-	
+        var goodsid = $(this).attr('mygoods')
+		// console.log(goodsid)
+    //    保存当前点击按钮
+        var $that = $(this)
+        data = {
+            'goodsid':goodsid
+        }
+        $.get('/mmbox/addcart/',data,function (response) {
+            if (response.status==0)
+            {//未登录
+                // window.open(('/mmbox/login/', target = '_self'))
+				window.location.href='/mmbox/login/'
+            } else if(response.status==1){
+                // console.log('添加成功')
+
+            }
+        })
+    })
+
+	$(".addToCart").click(function (e) {
+
+            //***** 找到当前点击图片的父元素下图片的地址 *****
+            var flyImg = $(this).parent().parent().find(".picture img").attr("src");
+
+            var flyer = $("<img class='u-flyer'/>");
+            flyer.attr("src", flyImg);
+            //***** 点击位置因为有滚动条所以不能使用page *****
+            //最终的位置top也因为有滚动条所以只能给个固定的位置
+            flyer.fly({
+                start: {
+                    left: e.clientX,
+                    top: e.clientY,
+                    width: 90,
+                    height: 90
+                },
+                end: {
+                    left: $("#cart").offset().left,
+                    top: 120,
+                    width: 0,
+                    height: 0
+                },
+                onEnd: function () {
+                    // console.log("加入购物车成功!")
+                    //***** 生成图片后要删除不然图片太多 *****
+                    flyer.remove();
+                }
+            });
+
+        })
+	//添加商品
+	$('.action #addgoods').click(function () {
+        var goodsid = $(this).attr('goodsid')
+		console.log(goodsid)
+    //    保存当前点击按钮
+        var $that = $(this)
+        data = {
+            'goodsid':goodsid
+        }
+        $.get('/mmbox/addcart/',data,function (response) {
+            if (response.status==0)
+            {//未登录
+                // window.open(('/mmbox/login/', target = '_self'))
+				window.location.href='/mmbox/login/'
+            } else if(response.status==1){
+            	$that.parent().prev().prev().html(response.number)
+                console.log('添加成功')
+				// $('.car_price').html(response.total)
+
+            }
+        })
+        })
+
+
+	// 商品减操作
+    $('.action #subgoods').click(function () {
+        console.log('减操作')
+
+        var goodsid = $(this).attr('goodsid')
+        var $that = $(this)
+
+        data = {
+            'goodsid':goodsid
+        }
+		console.log('11111')
+        $.get('/mmbox/subcart/', data, function (response) {
+            console.log(response)
+            if (response.status == 1){  // 操作成功
+                if (response.number > 0) {  // 改变个数
+                    $that.parent().prev().prev().html(response.number)
+					// $('.car_price').html(response.total)
+                } else {    // 隐藏减和个数
+                    $that.next().hide()
+                    $that.hide()
+                }
+            }
+        })
+    })
+
 	
 })

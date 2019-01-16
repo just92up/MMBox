@@ -17,7 +17,7 @@
 
     <!--飞的插件-->
     <script src="{% static 'js/jquery.fly.min.js' %}"></script>
-    <script src="{% static 'js/fly_to_car.js' %}"></script>
+{#    <script src="{% static 'js/fly_to_car.js' %}"></script>#}
 
     <!--点击商品将商品信息添加到购物车cookie-->
     <script src="{% static 'js/cart.js' %}"></script>
@@ -39,8 +39,8 @@
 
         <ul id="sideBar_top">
             {% if username %}
-                <li class="car">
-                    {% comment %}<button id="cart">{% endcomment %}<a href="{% url 'mmbox:shop_car' %}"><img
+                <li class="car" >
+                    {% comment %}<button id="cart">{% endcomment %}<a id="cart" href="{% url 'mmbox:shop_car' %}"><img
                         src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}"
                                                                class="hidden_pic"></a>{% comment %}</button>{% endcomment %}
                 </li>
@@ -429,7 +429,7 @@
                                 </div>
                             </div>
 
-                            <button class="addToCart">加入购物车</button>
+                            <button class="addToCart" mygoods="{{ good.id }}">加入购物车</button>
                         </div>
                     </div>
                 </div>{% endfor %}
