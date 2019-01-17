@@ -13,20 +13,10 @@
     <script src="{% static 'js/common.js' %}"></script>
     <!--详情页功能-->
     <script src="{% static 'js/goods_detail.js' %}"></script>
-    <!--保存cookie-->
-
-
-    <!--点击加入到购物车 跳转-->
-
 
     <!--飞的插件-->
     <script src="{% static 'js/jquery.fly.min.js' %}"></script>
-    {#		<script src="{% static 'js/myhome.js' %}"></script>#}
 
-
-    <!--如果插入同一个jquery会报错：购物车飞的插件 flyer.fly is not a function
-                                添加商品到cookie $.cookie is not a function
-    -->
 </head>
 <body>
 <div id="common">
@@ -35,7 +25,7 @@
 
         <ul id="sideBar_top">
             <li class="car">
-                {% comment %}<button id="cart">{% endcomment %}<a href="{% url 'mmbox:shop_car' %}"><img src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}"
+                {% comment %}<button id="cart">{% endcomment %}<a id="cart" href="{% url 'mmbox:shop_car' %}"><img src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}"
                                                                                  class="hidden_pic"></a>{% comment %}</button>{% endcomment %}
             </li>
             <li><a href="#"><img src="{% static 'img/pesron.png' %}"><img src="{% static 'img/1.png' %}"
@@ -324,32 +314,18 @@
                     <span class="rate_text">评价</span>
                     <!--星级评价-->
                     <div id="score"></div>
-                    <!--<script type="text/javascript" src="js/jquery.js"></script>	-->
-                    <script type="text/javascript" src="js/jquery.raty.js"></script>
-                    <script type="text/javascript">
-                        $.fn.raty.defaults.path = 'images';
-                        $(function () {
-                            $('#score').raty({
-                                score: 3, //初始化设置分数
-                                click: function (score) { //点击触发
-                                    console.log(score);
-                                }
-                            });
-                        })
-                    </script>
-
                     <span class="fullsend">（已有2 人评价）</span>
                 </div>
 
                 <div id="addto_car">
                     <span id="num_text">数量:</span>
                     <div id="num_box">
-                        <div id="reduce" class="change">
-                            <a>-</a>
+                        <div  class="change" id="subgoods" goodsid="{{ mygoosid}}">-
+{#                            <a id="subgoods" goodsid="{{ mygoosid}}">-</a>#}
                         </div>
-                        <input type="text" name="" id="qty" value="">
-                        <div id="add" class="change">
-                            <a>+</a>
+                        <input type="text" name="" id="mynumber" value="{{ mygoosid  }}">
+                        <div class="change" id="addgoods" goodsid="{{ mygoosid  }}">+
+{#                            <a id="addgoods" goodsid="{{ mygoosid  }}">+</a>#}
                         </div>
                     </div>
                     <div id="stock"><span>库存：</span><span class="have_stock">有货</span></div>

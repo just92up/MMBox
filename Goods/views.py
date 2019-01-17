@@ -134,8 +134,9 @@ def goods_detail(request,goodid):
         'price':price,
         'picture':picture,
         'introduce':introduce,
+        'mygoosid':good.id
     }
-    print(goodid)
+    # print(good.id)
     return render(request,'goods_detail.html',context=data)
 
 
@@ -151,18 +152,16 @@ def shop_car(request):
         carts = Cart.objects.filter(user=user).exclude(number=0)
         username =user.username
         total = 0
-        simplegoods = []
         for mygoods in carts:
             total1 = mygoods.number*mygoods.goods.price
             total =total+total1
-            simplegoods.append(total1)
 
         data = {
             'carts':carts,
             'username': username,
             'total':total,
-            'simplegoods':simplegoods
         }
+        print("jiajiajia")
         return render(request,'shop_car.html',context=data)
     else:
         return redirect('mmbox:login')
@@ -182,10 +181,6 @@ def addcart(request):
 
         #判断商品是否存在
         carts = Cart.objects.filter(user=user).filter(goods=goods)
-        # total = 0
-        # for i in carts:
-        #     total = i.number*i.goods.price
-
         if carts.exists():
             cart = carts.first()
             cart.number = cart.number + 1
@@ -196,11 +191,16 @@ def addcart(request):
             cart.goods = goods
             cart.number = 1
             cart.save()
+        simplegoods = 0
+        for mygoods in carts:
+            total1 = mygoods.number*mygoods.goods.price
+            simplegoods =simplegoods+total1
         data = {
             'msg':'-{}添加购物车成功'.format(goods.name),
             'status':1,
             'number':cart.number,
-            # 'total':total
+            'simplegoods':simplegoods,
+            'mygoodsid':goodsid
         }
 
         return JsonResponse(data)
@@ -223,18 +223,20 @@ def subcart(request):
 
     goodsid = request.GET.get('goodsid')
     goods = Goods.objects.get(pk=goodsid)
-
+    carts = Cart.objects.filter(user=user).filter(goods=goods)
     cart = Cart.objects.filter(user=user).filter(goods=goods).first()
     cart.number = cart.number - 1
     cart.save()
-    # total = 0
-    # for i in cart:
-    #     total = i.number * i.goods.price
+    simplegoods = 0
+    for i in carts:
+        total1 = i.number * i.goods.price
+        simplegoods = simplegoods+total1
     data = {
         'msg':'{}-商品删减成功'.format(goods.name),
         'status': 1,
         'number': cart.number,
-        # 'total':total
+        'simplegoods':simplegoods,
+        'mygoodsid':goodsid
     }
 
     return JsonResponse(data)

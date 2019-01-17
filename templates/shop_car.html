@@ -121,7 +121,7 @@
 									<th class="format">名称</th>
 									<th class="o_price">单价（元）</th>
 									<th class="format">数量</th>
-									<th class="price">金额（元）</th>
+									<th class="price">小计（元）</th>
 									<th class="action">操作</th>
 								</tr>
 							</thead>
@@ -133,7 +133,7 @@
 									<td class="format">{{ cart.goods.name }}</td>
 									<td class="o_price">{{ cart.goods.price }}.00</th>
 									<td class="format">{{ cart.number }}</td>
-									<td class="price">{{ simplegoods.0 }}</td>
+									<td class="price">{{ simplegoods }}</td>
 									<td class="action">
                                         <button id="subgoods" goodsid="{{ cart.goods.id }}">-</button>
                                         <button  id="addgoods" goodsid="{{ cart.goods.id }}">+</button>
@@ -150,7 +150,7 @@
 											<span class="total_text">
 												本仓总计：
 											</span>
-											<span class="car_price">
+											<span class="final_price">
 												¥{{ total}}
 											</span>
 										</div>

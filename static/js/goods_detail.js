@@ -11,17 +11,13 @@ $(function(){
 	
 	//获取id
 	var para=location.search;
-//	console.log(para);
 	var str="=";
 	var index=para.indexOf(str);
-//	console.log(index);
 	var id=para.substring(4);
-//	console.log(id);
 	
+
 	
-	
-	
-	
+/*
 	//详情页插入点击商品的json数据
 	$.getJSON("json/goods_list.json",function(data){
 		//遍历json数据
@@ -42,7 +38,7 @@ $(function(){
 				$("#small_block a").append(smallPic);
 				
 				
-				//***** 看79行；如果这里详情页的标题将商品json中的band和into一起插入，下面点加入购物车里面要显示得到这2样可能有问题，所以用标签套着 *****
+				//!***** 看79行；如果这里详情页的标题将商品json中的band和into一起插入，下面点加入购物车里面要显示得到这2样可能有问题，所以用标签套着 *****
 				var goodsBand=$("<h1><span class='the_band'>" + obj.band + "</span><span class='the_into'>" + obj.into + "</span></h1>")
 				$("#goods_chase").append(goodsBand);
 				
@@ -53,112 +49,14 @@ $(function(){
 	});
 	
 	
-	
-/*	//购物车商品点击保存到cookie事件函数
-	//(声明变量赋值/不赋值)当前点击商品某父元素下要保存到cookie的html()内容
-	//***** (三目)声明存在相同商品的数组变量 *****
-	
-	//存在相同商品: 遍历商品数组 -- 当商品数组中某个商品id == 上面声明的数组的id值
-								//id相同的商品的cookie的num属性值增加
-	//不存在相同商品：声明单件商品 -- 声明单件商品 -- 用对象键值保存要保存到cookie的商品的内容
-								//将每次的新商品推入数组中
-	//将商品数组转化为字符串存入cookie */
-	
-
-
-	//将 *首页商品列表中* 点击的 *当前商品* 保存到cookie中
-	
-	//点击加入购物车按钮
-	$(".addToCart").click(function(){
-//		console.log(1)；
-		//得到***** 当前点击元素的父元素下要保存到cookie的内容 *****
-		//要保存到啊cookie的点击商品的数据内容
-		
-		//***** id要找对不然是undifine 这样在购物车页面点该商品要跳转会自己找不到id 会跳到空页面 *****
-		var goodsId=$(this).parents("#main_content").find(".the_id").html();
-		console.log(goodsId);
-		var goodsImg=$(this).parents("#main_content").find("#big_img img").attr("src");
-		
-		//看45行，因为上面我插入页面是将两个数据一起获取一起插入
-		var goodsBand=$(this).parents().find(".the_band").html();
-		var goodsInto=$(this).parents("#main_content").find(".the_into").html();
-		var goodsPrice=$(this).parents("#main_content").find(".now_price").html();
-		
-		//***** 得到详情页面商品的数量传到购物车的数量文本框 -- 不然没点击一次增加同样的商品 *****
-		//***** 看shop_car.jsd 105-108 *****
-		//详情页的商品数量是个文本框用val()
-		var goodsNum=$(this).parents("#main_content").find("#num_box input").val();
-		console.log(typeof(goodsNum));
-		
-		
-		//***** (三目)声明存在相同商品的数组变量 *****
-		var goodsList = $.cookie("cart") ? JSON.parse( $.cookie("cart") ) : [];
-		
-		//声明存在相同商品
-		var isExists=false;
-		
-		//商品已存在 -- 增加他的num属性的值
-		
-		//遍历cookie数据，当匹配得到的与点击商品id相同的商品
-		for(i=0;i<goodsList.length;i++){
-			//商品数组中某个商品id == 上面声明的数组的id值
-			if(goodsList[i].id == goodsId){
-				//id相同的商品的cookie的num属性值增加
-				//点击1次相同商品数量+1；但是文本框里面有值怎么让商品数量同步加
-				
-				//这样写购物车里面的数量只会是详情页文本框的数量，如果单点购物车数量依旧显示详情页的值goodsList[i].num=goodsNum;
-				if(goodsNum==1){
-					goodsList[i].num++;
-				}
-				if(goodsNum>1){
-					console.log(typeof(goodsList[i].num));
-					console.log(goodsList[i].num);
-//					goodsList[i].num+=goodsNum;
-					goodsList[i].num+=parseInt(goodsNum);
-					console.log(typeof(goodsList[i].num));
-//					goodsList[i].num+=parseInt(goodsNum);
-					console.log(goodsList[i].num);
-					
-				}
-				
-				isExists=true;
-			}
-		}
-		
-		//不存在相同商品则保存到cookie中
-		if(!isExists){
-			//声明单件商品 -- 用对象键值保存要保存到cookie的商品的内容
-			var goods={
-				id:goodsId,
-				img:goodsImg,
-				band:goodsBand,
-				into:goodsInto,
-				price:goodsPrice,
-				//***** 将详情页面文本框的商品数量传给购物车页面 *****
-				num:goodsNum
-			}
-			//将每次的新商品推入数组中
-			goodsList.push(goods);
-		}
-		
-		//将商品数组转化为字符串存入cookie
-		$.cookie("cart",JSON.stringify(goodsList),{expires:22,path:"/"});
-		console.log($.cookie("cart"))
-		
-	})
-	
-	
-	//点击侧边栏购物车按钮跳转到购物车页面
-	$("#cart").click(function(){
-		location.href="shop_car.html";
-	})
-
+*/
 
 
 
 
 	
 		
+/*
 	//点击按钮增加、减少商品数量
 	//设定初始值
 	$("#qty").val(1);
@@ -176,7 +74,8 @@ $(function(){
 			$("#qty").val(1);
 		}
 	})
-	
+*/
+
 	
 	//放大镜
 	var big_area=$("#big_area");
@@ -242,14 +141,67 @@ $(function(){
 				height: 0 
 			},
 			onEnd: function(){
-				console.log("加入购物车成功!")
+				// console.log("加入购物车成功!")
 				flyer.remove();
 			}
 		});
 		console.log(2);
 	})
 	
-	
+	//添加商品
+	$('#addgoods').click(function () {
+		console.log($(this).attr('goodsid'))
+       var goodsid = $(this).attr('goodsid')
+    //保存当前点击按钮
+        var $that = $(this)
+        data = {
+            'goodsid':goodsid
+        }
+        $.get('/mmbox/addcart/',data,function (response) {
+            console.log("开始后台添加")
+        	if (response.status==0)
+            {//未登录
+                // window.open(('/mmbox/login/', target = '_self'))
+				window.location.href='/mmbox/login/'
+            } else if(response.status==1){
+        		console.log("mmmmmmmmmmmmmm")
+            	$that.prev().val(response.number)
+				$that.prev().prev().show()
+
+            }
+        })
+        })
+
+
+	// 商品减操作
+    $('#subgoods').click(function () {
+    	console.log('?????????????')
+        var goodsid = $(this).attr('goodsid')
+        var $that = $(this)
+        data = {
+            'goodsid':goodsid
+        }
+        $.get('/mmbox/subcart/', data, function(response) {
+            if (response.status == 1){  // 操作成功
+                if (response.number >0) {  // 改变个数
+                	console.log("kkkkkk")
+					$that.next().val(response.number)
+                	// $('#mynumber').html(response.number)
+
+                   /* $that.parent().prev().prev().html(response.number)
+                    $that.parent().prev().html(response.simplegoods)
+					*/// $('.car_price').html(response.total)
+                } else {    // 隐藏减和个数
+                    // $that.next().hide()
+                   /* $that.parent().prev().prev().html(response.number)
+                    $that.parent().prev().html("0")*/
+                   $that.next().val("0")
+                    $that.hide()
+                    console.log("减之后")
+                }
+            }
+        })
+    })
 	
 	
 	

@@ -1,6 +1,6 @@
 $(function(){
 	//    添加到购物车操作
-    $('.addToCart').click(function (e) {
+    $('.addToCart').click(function () {
 
         var goodsid = $(this).attr('mygoods')
 		// console.log(goodsid)
@@ -16,6 +16,7 @@ $(function(){
 				window.location.href='/mmbox/login/'
             } else if(response.status==1){
                 // console.log('添加成功')
+                // $('#car_price .car_price').html(response.total)
 
             }
         })
@@ -53,7 +54,7 @@ $(function(){
         })
 	//添加商品
 	$('.action #addgoods').click(function () {
-        var goodsid = $(this).attr('goodsid')
+	    var goodsid = $(this).attr('goodsid')
 		console.log(goodsid)
     //    保存当前点击按钮
         var $that = $(this)
@@ -67,6 +68,8 @@ $(function(){
 				window.location.href='/mmbox/login/'
             } else if(response.status==1){
             	$that.parent().prev().prev().html(response.number)
+                $that.prev().show()
+                $that.parent().prev().html(response.simplegoods)
                 console.log('添加成功')
 				// $('.car_price').html(response.total)
 
@@ -77,7 +80,6 @@ $(function(){
 
 	// 商品减操作
     $('.action #subgoods').click(function () {
-        console.log('减操作')
 
         var goodsid = $(this).attr('goodsid')
         var $that = $(this)
@@ -86,15 +88,19 @@ $(function(){
             'goodsid':goodsid
         }
 		console.log('11111')
-        $.get('/mmbox/subcart/', data, function (response) {
-            console.log(response)
+        $.get('/mmbox/subcart/', data, function(response) {
+            console.log("????")
             if (response.status == 1){  // 操作成功
-                if (response.number > 0) {  // 改变个数
+                if (response.number >0) {  // 改变个数
                     $that.parent().prev().prev().html(response.number)
+                    $that.parent().prev().html(response.simplegoods)
 					// $('.car_price').html(response.total)
                 } else {    // 隐藏减和个数
-                    $that.next().hide()
+                    // $that.next().hide()
+                    $that.parent().prev().prev().html(response.number)
+                    $that.parent().prev().html("0")
                     $that.hide()
+                    console.log("减之后")
                 }
             }
         })
