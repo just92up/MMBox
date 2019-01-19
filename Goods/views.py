@@ -244,7 +244,18 @@ def subcart(request):
 
 #改变购物车商品选中状态
 def changecartstatus(request):
-    return None
+    cartid = request.GET.get('cartid')
+    cart = Cart.objects.get(pk=cartid)
+    cart.isselect = not cart.isselect
+    cart.save()
+
+    data = {
+        'msg':'状态修改成功',
+        'status':1,
+        'isselect':cart.isselect
+    }
+    return JsonResponse(data)
+
 
 #添加收藏
 def addcollect(request,userid,goodid):
@@ -271,3 +282,19 @@ def checkphonenum(request):
         })
 
 
+def changecartall(request):
+    token = request.session.get('token')
+    user = User.objects.get(token=token)
+
+    isall = request.GET.get('isall')
+    if isall == 'true':
+        isall = True
+    else:
+        isall = False
+
+    carts = Cart.objects.filter(user=user).update(isselect=isall)
+    data = {
+        'msg':'状态修改成功',
+        'status':1
+    }
+    return JsonResponse(data)

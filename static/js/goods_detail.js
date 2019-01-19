@@ -16,7 +16,7 @@ $(function(){
 	var id=para.substring(4);
 	
 
-	
+
 /*
 	//详情页插入点击商品的json数据
 	$.getJSON("json/goods_list.json",function(data){
@@ -29,26 +29,26 @@ $(function(){
 				//将点击商品的json数据生成节点插入页面 (图片、标题、价格)
 				var goodsId=$("<i class='the_id'>" + obj.id + "</i>");
 				$("#goods_chase").append(goodsId);
-				
+
 				var smallImg=$("<img src=" + obj.img + " />");
 				var bigImg=$("<img src=" + obj.img + " />");
 				var smallPic=$("<img src=" + obj.img + " />");
 				$("#small_area").before(smallImg);
 				$("#big_img").append(bigImg);
 				$("#small_block a").append(smallPic);
-				
-				
+
+
 				//!***** 看79行；如果这里详情页的标题将商品json中的band和into一起插入，下面点加入购物车里面要显示得到这2样可能有问题，所以用标签套着 *****
 				var goodsBand=$("<h1><span class='the_band'>" + obj.band + "</span><span class='the_into'>" + obj.into + "</span></h1>")
 				$("#goods_chase").append(goodsBand);
-				
+
 				var goodsPrice=$("<span>" + "¥" + "<span class='now_price'>" + obj.price + "</span></span>")
 				$(".discount").before(goodsPrice);
 			}
 		}
 	});
-	
-	
+
+
 */
 
 
@@ -186,15 +186,7 @@ $(function(){
                 if (response.number >0) {  // 改变个数
                 	console.log("kkkkkk")
 					$that.next().val(response.number)
-                	// $('#mynumber').html(response.number)
-
-                   /* $that.parent().prev().prev().html(response.number)
-                    $that.parent().prev().html(response.simplegoods)
-					*/// $('.car_price').html(response.total)
                 } else {    // 隐藏减和个数
-                    // $that.next().hide()
-                   /* $that.parent().prev().prev().html(response.number)
-                    $that.parent().prev().html("0")*/
                    $that.next().val("0")
                     $that.hide()
                     console.log("减之后")

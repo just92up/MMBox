@@ -1,4 +1,5 @@
 $(function(){
+
 	//    添加到购物车操作
     $('.addToCart').click(function () {
 

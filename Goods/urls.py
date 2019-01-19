@@ -4,6 +4,7 @@ from Goods import views
 
 urlpatterns = [
     url(r'^index/$',views.index,name='index'),#首页
+
     url(r'^register/$',views.register,name='register'),#注册
     url(r'^login/$',views.login,name='login'),#登录
     url(r'^logout/$',views.logout,name='logout'),#退出
@@ -15,6 +16,7 @@ urlpatterns = [
     url(r'^addcart/$',views.addcart,name='addcart'),#添加到购物车
     url(r'^subcart/$',views.subcart,name='subcart'),#从购物车减
     url(r'^changecartstatus/$',views.changecartstatus,name='changecartstatus'),#购物车商品选中状态改变
+    url(r'^changecartall/$',views.changecartall,name='changecartall'),
 
 
 ]
