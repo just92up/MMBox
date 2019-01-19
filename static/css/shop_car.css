@@ -258,8 +258,8 @@
 
 #sum_block .go_to_calc {
     font-size: 18px;
-    background-color: #ff5073;
-    color: #fff;
+    /*background-color: #ff5073;*/
+    /*color: #fff;*/
     width: 120px;
     height: 30px;
     line-height: 30px;
@@ -267,7 +267,8 @@
     font-size: 18px;
 }
 
-#sum_block .go_to_calc a {
+#sum_block .go_to_calc button {
+    background-color: #ff5073;
     text-decoration: none;
     color: #fff;
     height: 30px;
@@ -303,6 +304,5 @@
     padding-left: 58px;
     /*line-height: 2px;*/
 }
-
 
 

@@ -17,6 +17,11 @@ urlpatterns = [
     url(r'^subcart/$',views.subcart,name='subcart'),#从购物车减
     url(r'^changecartstatus/$',views.changecartstatus,name='changecartstatus'),#购物车商品选中状态改变
     url(r'^changecartall/$',views.changecartall,name='changecartall'),
-
+    url(r'^generateorder/$', views.generateorder, name='generateorder'),
+    url(r'^orderlist/$',views.orderlist,name='orderlist'),
+    url(r'^orderdetail/(.+)/$',views.orderdetail,name='orderdetail'),
+    url(r'^pay/$',views.pay,name='pay'),
+    url(r'^appnotify/$',views.appnotify,name='appnotify'),
+    url(r'^returnview/$',views.returnview,name='returnview'),
 
 ]

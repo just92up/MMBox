@@ -1,5 +1,35 @@
 $(function(){
 
+
+
+        //计算商品总价
+    function total() {
+        var sum = 0
+        $('.mygoods').each(function () {
+            var $confirm = $(this).find('.mybut ')
+            // var $confirm = $(this).find('#tosuccess ')
+            var $num = $(this).find('.num')
+            var $content = $(this).find('.myprice')
+            console.log("开始进入计算的便利")
+            console.log($confirm.find('#tosuccess').length)
+            if ($confirm.find('.btn-success').length) {
+                console.log("开始计算")
+                var num = $num.attr('num')
+                console.log('num',num)
+
+                var price = $content.attr('myprice')
+                console.log('price',price)
+                sum += parseInt(num) * parseInt(price)
+            }
+
+        })
+        console.log(sum)
+        $("#selecttotal").html(sum)
+
+    }
+
+
+
 	//    添加到购物车操作
     $('.addToCart').click(function () {
 
@@ -72,10 +102,13 @@ $(function(){
                 $that.prev().show()
                 $that.parent().prev().html(response.simplegoods)
                 console.log('添加成功')
+
 				// $('.car_price').html(response.total)
 
             }
+            total()
         })
+
         })
 
 
@@ -96,16 +129,23 @@ $(function(){
                     $that.parent().prev().prev().html(response.number)
                     $that.parent().prev().html(response.simplegoods)
 					// $('.car_price').html(response.total)
+                    console.log(">>>>>>>>>>>>>>>>>>>>")
+                    total()
                 } else {    // 隐藏减和个数
                     // $that.next().hide()
                     $that.parent().prev().prev().html(response.number)
                     $that.parent().prev().html("0")
                     $that.hide()
                     console.log("减之后")
+
                 }
+                total()
             }
         })
+
+
     })
+
 
 	
 })

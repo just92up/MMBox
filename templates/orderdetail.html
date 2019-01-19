@@ -1,0 +1,318 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>购物车</title>
+    <script rel="stylesheet" href="{% static 'js/jquery.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css.map' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/shop_car.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/orderdetail.css' %}"/>
+
+    <script src="{% static 'js/jquery-1.12.0.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+
+    <!--购物车页面js-->
+    <script src="{% static 'js/shop_car.js' %}"></script>
+    <script src="{% static 'js/jquery.cookie.js' %}"></script>
+
+    <!--飞到购物车-->
+    <script src="{% static 'js/cart.js' %}"></script>
+    <script src="{% static 'js/orderpay.js' %}"></script>
+
+    {#		<script src="{% static 'js/myhome.js' %}"></script>#}
+
+</head>
+<body>
+
+<div id="common">
+    <!--侧边栏-->
+    <div id="sideBar">
+
+        <ul id="sideBar_top">
+            <li class="car">
+                {% comment %}<button id="cart">{% endcomment %}<a href="{% url  'mmbox:shop_car' %}"><img
+                    src="{% static 'img/scar.png' %}"><img src="{% static 'img/cscar.png' %}" class="hidden_pic"></a>{% comment %}</button>{% endcomment %}
+            </li>
+            <li><a><img src="{% static 'img/pesron.png' %}"><img src="{% static 'img/1.png' %}" class="hidden_pic">
+            </a></li>
+            <li><a><img src="{% static 'img/heart.png' %}"><img src="{% static 'img/2.png' %}" class="hidden_pic"></a>
+            </li>
+            <li><a href="{% url 'mmbox:orderlist' %}"><img src="{% static 'img/dingdan.png' %}"><img src="{% static 'img/3.png' %}" class="hidden_pic"></a>
+            </li>
+        </ul>
+        <ul id="sideBar_bottom">
+            <li><a><img src="{% static 'img/support.png' %}" class="side_service"><img
+                    src="{% static 'img/ssupport.png' %}" class="hidden_pic"></a></li>
+            <li><a><img src="{% static 'img/top.png' %}" class="top"><img src="{% static 'img/stop.png' %}"
+                                                                          class="hidden_pic"></a></li>
+        </ul>
+    </div>
+
+    <div id="side_slider">
+        <div id="slider_top">
+            <div class="slider1">
+                个人中心
+            </div>
+            <div class="slider2">
+                我的收藏
+            </div>
+            <div class="slider3">
+                我的订单
+            </div>
+        </div>
+        <div id="slider_bottom">
+            <div class="slider4">
+                在线客服
+            </div>
+            <div class="slider5">
+                返回顶部
+            </div>
+        </div>
+    </div>
+
+
+    <!--顶部-->
+    <div id="top">
+        <div id="box">
+            <p class="p1">
+                <img src="{% static 'img/hearts.png' %}" class="pic1">
+                <span>100%韩国正品美美箱</span>
+                <img src="{% static 'img/candler.png' %}">
+                <span class="regs">[每日签到]</span>
+                <span>每月累计签到满10次，即可获得5蜜豆</span>
+            </p>
+            <p class="p2">
+
+
+                {% if username %}
+                    <span>你好：<a href="#">{{ username }}</a></span>
+                    <a href="{% url 'mmbox:logout' %}">退出</a>
+                {% else %}
+
+                    <span><a href="{% url 'mmbox:login' %}">登录</a></span>
+                    <span><a href="{% url 'mmbox:register' %}">注册</a></span>
+                    <span>|</span>
+                {% endif %}
+                <img src="{% static 'img/phone.png' %}">
+                <span>手机APP</span>
+                <img src="{% static 'img/supports.png' %}">
+                <span>在线客服</span>
+            </p>
+        </div>
+    </div>
+
+
+    <!--头部-->
+    <div id="title">
+        <div id="car_head">
+            <div id="logo">
+                <a href="{% url 'mmbox:index' %}"><img src="{% static 'img/new-logo_memebox-china.png' %}"></a>
+            </div>
+            <div id="progress">
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--购物车-->
+   {% comment %} <div id="car_container">
+        <div id="car_table">
+            <div id="car_box">
+                <table cellspacing="0" cellpadding="" border="0">
+                    <thead>
+                    <tr>
+                        {#									<th class="loacl">是否选择</th>#}
+                        <th class="format">商品图</th>
+                        <th class="format">名称</th>
+                        <th class="o_price">单价（元）</th>
+                        <th class="format">数量</th>
+>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr class="mygoods">
+
+                            <td class="goods_img ">
+                                {#                                        <div class="glyphicon glyphicon-ok"></div>#}
+                                <img src='{{ cart.goods.picture }}'>
+                            </td>
+                            <td class="format">{{ cart.goods.name }}</td>
+                            <td class="myprice" myprice="{{ cart.goods.price }}">{{ cart.goods.price }}.00
+                            </th>
+                            <td class="num" num="{{ cart.number }}">{{ cart.number }}</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+
+        <!--结算区-->
+        <div id="sum_block">
+            <div class="sum_price" style="position: fixed; bottom: 0px; margin: 0px;">
+                <div class="go_to_calc">
+                    <a href="">
+                        去结算
+                    </a>
+                </div>
+                <div class="total_all">
+							<span class="calc_text">
+								总计：
+							</span>
+                    <span class="final_price">
+                                {{ total }}
+{#								<!--¥1,154.00-->#}
+							</span>
+                    <span class="no_mail">
+									(不含运费)
+							</span>
+                </div>
+
+            </div>
+        </div>
+    </div>{% endcomment %}
+<div class="orderdetail">
+        <p>
+            订单号: {{ order.identifier }}
+        </p>
+        <p>
+            状态:
+            <span style="background: red; color: white">
+                {% if order.status == 0 %}
+                    未付款
+                {% elif order.status == 1 %}
+                    已付款
+                {% endif %}
+            </span>
+        </p>
+        <ul>
+            {% for orderGoods in order.ordergoods_set.all %}
+            <li class="goods">
+                <div class="content-wrapper">
+                    <div class="img">
+                        <img src="{{ orderGoods.goods.picture }}" alt="">
+                    </div>
+                    <div class="detail">
+                        <p class="name">商品名称：{{ orderGoods.goods.name }}</p>
+                        <p class="" price="{{ orderGoods.goods.price }}">商品单价：￥{{ orderGoods.goods.price }}</p>
+                        <p class="num" num="{{ orderGoods.number }}">购买数量：x{{ orderGoods.number }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% if order.status == 0 %}
+        <div class="bill">
+            <button class="bill-right" id="pay" identifier="{{ order.identifier }}">
+                付款
+            </button>
+        </div>
+        {% endif %}
+</div>
+
+    <!--页脚-->
+    <div id="footer">
+
+        <div id="footer_intro">
+            <div class="intro">
+                <img src="{% static 'img/genuine.png' %}">
+                <p>100%正品</p>
+            </div>
+            <div class="intro">
+                <img src="{% static 'img/low.png' %}">
+                <p>优质低价</p>
+            </div>
+            <div class="intro">
+                <img src="{% static 'img/deliver.png' %}">
+                <p>极速发货</p>
+            </div>
+            <div class="intro">
+                <img src="{% static 'img/refund.png' %}">
+                <p>退换无忧</p>
+            </div>
+        </div>
+
+        <div id="footer_about">
+            <div id="footer_about_contact">
+                <div id="chat">
+                    <img src="{% static 'img/szj.jpg' %}">
+                    <p>关于我们</p>
+                    <div id="chat_tool">
+                        <div id="code">
+                            <img src="{% static 'img/download.png' %}" class="download">
+                            <img src="{% static 'img/wechatdownload.png' %}" class="wechatdownload">
+                            <img src="{% static 'img/sinadownload.png' %}" class="sinadownload">
+                        </div>
+                        <img src="{% static 'img/meme.png' %}" class="meme">
+                        <img src="{% static 'img/wechat.png' %}" class="">
+                        <img src="{% static 'img/sina.png' %}" class="">
+                    </div>
+                </div>
+
+                <div id="list">
+                    <ul class="list">
+                        <li class="list_title">关于美美箱</li>
+                        <li><a href="#">美美全球</a></li>
+                        <li><a href="#">品牌优势</a></li>
+                        <li><a href="#">消费保障</a></li>
+                    </ul>
+                    <ul class="list">
+                        <li class="list_title">帮助中心</li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">账户相关</a></li>
+                        <li><a href="#">包邮政策</a></li>
+                        <li><a href="#">支付相关</a></li>
+                        <li><a href="#">物流相关</a></li>
+                        <li><a href="#">退换政策</a></li>
+                    </ul>
+                    <ul class="list">
+                        <li class="list_title">服务协议</li>
+                        <li><a href="#">服务协议</a></li>
+                        <li><a href="#">个人网申协议</a></li>
+                    </ul>
+                    <ul class="list">
+                        <li class="list_title">联系我们</li>
+                        <li><a href="#">商务合作</a></li>
+                        <li><a href="#">分销合作</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer_contact">
+            <div class="service">
+                联系我们
+            </div>
+            <div class="way">
+                <span>客服时间:周一~周日(9:00 - 21:00)</span>
+                <span>客服热线:400-720-9967</span>
+                <span>客服邮箱:kf@memeboxglobal.com</span>
+            </div>
+        </div>
+
+        <div id="footer_legal">
+            <div class="corporation">
+                © 2015 Memebox Corporation.All Rights Reserved.
+            </div>
+            <div class="address">
+                <span><img src="{% static 'img/icon.gif' %}">&nbsp;蜜米柏克思（上海）商贸有限公司 上海市杨浦区政立路415号中航天盛广场A座6楼 沪ICP备14043341号</span>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

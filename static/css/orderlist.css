@@ -1,0 +1,14 @@
+tbody  tr td{
+    border: 1px solid darkgray;
+}
+
+tbody  tr td li{
+    /*padding-left: 80px;*/
+    list-style: none;
+    float: left;
+    width: 300px;
+}
+tbody  tr td span{
+    float: left;
+    margin-left: 100px;
+}

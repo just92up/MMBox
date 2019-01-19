@@ -18,7 +18,7 @@
     <script src="{% static 'js/jquery.cookie.js' %}"></script>
 
     <!--飞到购物车-->
-    <script src="{% static 'js/cart.js' %}"></script>
+{#    <script src="{% static 'js/cart.js' %}"></script>#}
 
     {#		<script src="{% static 'js/myhome.js' %}"></script>#}
 
@@ -38,7 +38,7 @@
             </a></li>
             <li><a><img src="{% static 'img/heart.png' %}"><img src="{% static 'img/2.png' %}" class="hidden_pic"></a>
             </li>
-            <li><a><img src="{% static 'img/dingdan.png' %}"><img src="{% static 'img/3.png' %}" class="hidden_pic"></a>
+            <li><a href="{% url 'mmbox:orderlist' %}"><img src="{% static 'img/dingdan.png' %}"><img src="{% static 'img/3.png' %}" class="hidden_pic"></a>
             </li>
         </ul>
         <ul id="sideBar_bottom">
@@ -133,13 +133,13 @@
                         <th class="action">操作</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="jisuan">
 
                     {% for cart in carts %}
                         <tr class="mygoods">
                             <td class="format mybut" id='myselect' cartid="{{ cart.id }}">
                                 {% if cart.isselect %}
-                                    <div class="btn btn-success"></div>
+                                    <div id="tosuccess" class="btn btn-success"></div>
                                 {% else %}
                                     <div class="btn btn-default"></div>
                                 {% endif %}
@@ -151,7 +151,7 @@
                             <td class="format">{{ cart.goods.name }}</td>
                             <td class="myprice" myprice="{{ cart.goods.price }}">{{ cart.goods.price }}.00
                             </th>
-                            <td class="num" num="{{ cart.number }}">{{ cart.number }}</td>
+                            <td class="num" num="{{ cart.number}}">{{ cart.number }}</td>
                             <td class="price">{{ simplegoods }}</td>
                             <td class="action">
                                 <button id="subgoods" goodsid="{{ cart.goods.id }}">-</button>
@@ -173,9 +173,9 @@
 
                                 <span class="total_text">
 												本仓总计：
-											</span>
-                                <span class="final_price">
-												¥{{ total }}
+											</span>￥
+                                <span class="final_price" id="selecttotal">
+{#												¥{{ total }}#}
 											</span>
                             </div>
                         </td>
@@ -191,11 +191,11 @@
         <div id="sum_block">
             <div class="sum_price" style="position: fixed; bottom: 0px; margin: 0px;">
                 <div class="go_to_calc">
-                    <a href="">
-                        去结算
-                    </a>
+                    <button id="generateorder" value="">
+                        下单
+                    </button>
                 </div>
-                <div class="total_all">
+              {% comment %}  <div class="total_all">
 							<span class="calc_text">
 								总计：
 							</span>
@@ -206,7 +206,7 @@
                     <span class="no_mail">
 									(不含运费)
 							</span>
-                </div>
+                </div>{% endcomment %}
 
             </div>
         </div>

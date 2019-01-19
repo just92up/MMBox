@@ -1,0 +1,26 @@
+.orderdetail{
+    padding-left: 100px;
+     position: relative;
+    border: 1px solid darkgrey;
+
+}
+.orderdetail img{
+    width: 50px;
+    height: 50px;
+    margin: 0;
+
+}
+.bill-right{
+    position: absolute;
+    bottom: 15px;
+    right: 120px;
+    width: 80px;
+    height: 50px;
+    float: right;
+    background-color: deeppink;
+    text-align: center;
+    line-height: 50px;
+    margin: 0;
+    /*margin-right: 120px;*/
+}
+
